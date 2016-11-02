@@ -1,0 +1,17 @@
+CREATE TABLE kysely (
+	id SMALLINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	kysymys VARCHAR(255) NOT NULL,
+	monivastaus int(255),
+	avoin VARCHAR(255)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- MUISTA! console encoding latin1
+
+INSERT INTO kysely
+	(kysymys, monivastaus, avoin)
+values
+	('Oletko tyytyväinen?', '2', 'Joskus vähän emmätiiä'),
+	('Juusto vai kinkku päällimmäiseksi?', '1', 'Ainoa oikea vastaus'),
+	('Clinton vai Trump?', '5', 'En mä ees asu siel'),
+	('Äiti vai tytär?', '2', '...');
