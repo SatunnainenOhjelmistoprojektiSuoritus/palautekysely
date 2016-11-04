@@ -1,17 +1,36 @@
-CREATE TABLE kysely (
-	id SMALLINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	kysymys VARCHAR(255) NOT NULL,
-	monivastaus int(255),
-	avoin VARCHAR(255)
+CREATE TABLE vastaus (
+	vastaus_id INT AUTO_INCREMENT,
+	kysely_id INT,
+	vastaus VARCHAR(255),
+	vastaus_tyyppi VARCHAR(255),
+	PRIMARY KEY (vastaus_id),
+	FOREIGN KEY (kysely_id) REFERENCES kysely(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE kysely (
+	id INT AUTO_INCREMENT,
+	kysely_id INT,
+	kysely_nimi VARCHAR(255),
+	kysely_kysymys VARCHAR(255),
+	PRIMARY KEY(id, kysely_id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- MUISTA! console encoding latin1
 
 INSERT INTO kysely
-	(kysymys, monivastaus, avoin)
+	(kysely_id, kysely_nimi, kysely_kysymys)
 values
-	('Oletko tyytyväinen?', '2', 'Joskus vähän emmätiiä'),
-	('Juusto vai kinkku päällimmäiseksi?', '1', 'Ainoa oikea vastaus'),
-	('Clinton vai Trump?', '5', 'En mä ees asu siel'),
-	('Äiti vai tytär?', '2', '...');
+	('1', 'Kyselyn nimi', 'Onko kaikki hyvin'),
+	('1', 'Kyselyn nimi' , 'Miksi ei'),
+	('1', 'Kyselyn nimi' , 'Monivalinta');
+	
+INSERT INTO vastaus
+	( kysely_id, vastaus, vastaus_tyyppi)
+values
+	(1,'Ei', 'String'),
+	(1,'...', 'String'),
+	(1,'1|2|1|1|1', 'Monivalinta');
+	
+	
+	
+	
