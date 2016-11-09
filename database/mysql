@@ -20,17 +20,32 @@ CREATE TABLE kysely (
 INSERT INTO kysely
 	(kysely_id, kysely_nimi, kysely_kysymys)
 values
-	('1', 'Kyselyn nimi', 'Onko kaikki hyvin'),
-	('1', 'Kyselyn nimi' , 'Miksi ei'),
-	('1', 'Kyselyn nimi' , 'Monivalinta');
+	('2', 'Testikysely', 'Onko kaikki hyvin'),
+	('2', 'Testikysely' , 'Saadaanko projekti valmiiksi'),
+	('2', 'Testikysely' , 'Random arvo'),
+	('2', 'Testikysely' , 'Monivalinta');
 	
 INSERT INTO vastaus
 	( kysely_id, vastaus, vastaus_tyyppi)
 values
-	(1,'Ei', 'String'),
-	(1,'...', 'String'),
-	(1,'1|2|1|1|1', 'Monivalinta');
+	(2,'Ei', 'String'),
+	(2,'...', 'String'),
+	(2,'1', 'Int'),
+	(2,'1|2|1|1|1', 'Monivalinta');
+
+
+-- SQL Kyselyt
+select k.kysely_id, k.id, v.vastaus_id, k.kysely_nimi, k.kysely_kysymys, v.vastaus_tyyppi, v.vastaus 
+from kysely k JOIN vastaus v on k.id=v.vastaus_id
+where k.kysely_id = kysymys_id;
 	
 	
 	
 	
+	
+	
+	
+
+
+
+
