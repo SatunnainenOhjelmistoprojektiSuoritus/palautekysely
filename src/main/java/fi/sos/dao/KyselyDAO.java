@@ -16,7 +16,6 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import fi.sos.bean.Kysely;
-import fi.sos.bean.Vastaus;
 
 @Repository
 public class KyselyDAO {
@@ -83,7 +82,7 @@ public class KyselyDAO {
 
 	public List<Kysely> haeKysymys(int kysymys_id) {
 
-		String sql = "select k.kysely_id, k.id, v.vastaus_id, k.kysely_nimi, k.kysely_kysymys, v.vastaus_tyyppi, v.vastaus from kysely k JOIN vastaus v on k.id=v.vastaus_id";
+		String sql = "select k.kysely_id, k.id, v.vastaus_id, k.kysely_nimi, k.kysely_kysymys, v.vastaus_tyyppi, v.vastaus from kysely k JOIN vastaus v on k.id=v.vastaus_id where k.kysely_id =" + kysymys_id;
 		RowMapper<Kysely> mapper = new KyselyRowMapper();
 		List<Kysely> kyselyt = jdbcTemplate.query(sql, mapper);
 
