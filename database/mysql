@@ -20,17 +20,20 @@ CREATE TABLE kysely (
 INSERT INTO kysely
 	(kysely_id, kysely_nimi, kysely_kysymys)
 values
-	('1', 'Kyselyn nimi', 'Onko kaikki hyvin'),
-	('1', 'Kyselyn nimi' , 'Miksi ei'),
-	('1', 'Kyselyn nimi' , 'Monivalinta');
+	('2', 'Testikysely', 'Onko kaikki hyvin'),
+	('2', 'Testikysely' , 'Saadaanko projekti valmiiksi'),
+	('2', 'Testikysely' , 'Random arvo'),
+	('2', 'Testikysely' , 'Monivalinta');
 	
 INSERT INTO vastaus
 	( kysely_id, vastaus, vastaus_tyyppi)
 values
-	(1,'Ei', 'String'),
-	(1,'...', 'String'),
-	(1,'1|2|1|1|1', 'Monivalinta');
+	(2,'Ei', 'String'),
+	(2,'...', 'String'),
+	(2,'1', 'Int'),
+	(2,'1|2|1|1|1', 'Monivalinta');
 	
-	
-	
-	
+
+
+
+
