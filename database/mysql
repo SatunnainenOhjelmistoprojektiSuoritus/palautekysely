@@ -51,7 +51,13 @@ values
 	('Testikysely2');
 	
 
-	
+// Hakee kaikki kyselyn kysymykset
+
+select * from kysymys natural join kysely where kysely_id = 1;
+
+// Hakee kaikki kyselyyn annetut vastaukset
+
+select * from vastaus natural join kysymys where kysely_id = 1;
 	
 	
 	
