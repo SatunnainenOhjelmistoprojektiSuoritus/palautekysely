@@ -18,7 +18,7 @@ public class KyselyController {
 	@Inject
 	KyselyDAO dao;
 	
-	@RequestMapping("/{id}")
+	@RequestMapping("/kysely/{id}")
 	public @ResponseBody List<Kysely> haeKaikkiKyselytJSON(@PathVariable int id) {
 		List<Kysely> kyselyt = dao.haeKysymys(id);
 		return kyselyt;
