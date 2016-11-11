@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import fi.sos.bean.Kysely;
+import fi.sos.bean.Kysymys;
 
 public class KyselyRowMapper implements RowMapper<Kysely> {
 
@@ -13,13 +14,21 @@ public class KyselyRowMapper implements RowMapper<Kysely> {
 		
 		Kysely k = new Kysely();
 		
-		k.setId(rs.getInt("id"));
 		k.setKysely_id(rs.getInt("kysely_id"));
-		k.setVastaus_id(rs.getInt("vastaus_id"));
 		k.setKysely_nimi(rs.getString("kysely_nimi"));
-		k.setKysely_kysymys(rs.getString("kysely_kysymys"));
-		k.setVastaus(rs.getString("vastaus"));
-		k.setVastaus_tyyppi(rs.getString("vastaus_tyyppi"));		
+		
+		k.setDeployed(rs.getBoolean("kysely_deployed"));
+		
+		//Kysymys olio
+		Kysymys ky = new Kysymys();
+		ky.setKysymys(rs.getString("kysymys"));
+		ky.setKysely_id(rs.getInt("kysely_id"));
+		ky.setKysymys_tyyppi(rs.getString("kysymys_tyyppi"));
+		ky.setKysymys_id(rs.getInt("kysymys_id"));
+		
+		
+		k.setKysymys(ky);
+		
 		
 		return k;
 	}

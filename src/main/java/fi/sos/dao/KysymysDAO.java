@@ -8,10 +8,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import fi.sos.bean.Kysely;
+import fi.sos.bean.Kysymys;
 
 @Repository
-public class KyselyDAO {
+public class KysymysDAO {
 
 	@Inject
 	private JdbcTemplate jdbcTemplate;
@@ -24,11 +24,12 @@ public class KyselyDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public List<Kysely> haeKysely(int kysely_id) {
 
-		String sql = "select * from kysymys natural join kysely where kysely_id =" + kysely_id;
-		RowMapper<Kysely> mapper = new KyselyRowMapper();
-		List<Kysely> kyselyt = jdbcTemplate.query(sql, mapper);
+	public List<Kysymys> haeKysymys(int kysymys_id) {
+
+		String sql = "";
+		RowMapper<Kysymys> mapper = new KysymysRowMapper();
+		List<Kysymys> kyselyt = jdbcTemplate.query(sql, mapper);
 
 		return kyselyt;
 	}
