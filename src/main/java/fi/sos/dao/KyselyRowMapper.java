@@ -24,13 +24,11 @@ public class KyselyRowMapper implements RowMapper<Kysely> {
 		ky.setKysymys(rs.getString("kysymys"));
 		ky.setKysely_id(rs.getInt("kysely_id"));
 		ky.setKysymys_tyyppi(rs.getString("kysymys_tyyppi"));
-		ky.setKysymys_id(rs.getInt("kysymys_id"));
-		
-		
+		ky.setKysymys_id(rs.getInt("kysymys_id"));		
 		k.setKysymys(ky);
 		
 		
 		return k;
 	}
-
+	
 }
