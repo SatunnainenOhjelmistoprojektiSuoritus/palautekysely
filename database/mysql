@@ -38,6 +38,8 @@ values
 select k.kysely_id, k.id, v.vastaus_id, k.kysely_nimi, k.kysely_kysymys, v.vastaus_tyyppi, v.vastaus 
 from kysely k JOIN vastaus v on k.id=v.vastaus_id
 where k.kysely_id = kysymys_id;
+
+select count(distinct kysely_id) as kys_kpl from kysely;
 	
 	
 	
