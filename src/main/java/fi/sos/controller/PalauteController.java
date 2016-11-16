@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import fi.sos.bean.Kysely;
 import fi.sos.bean.Kyselyt;
@@ -37,7 +39,7 @@ public class PalauteController {
 	public @ResponseBody List<Kysely> haeKyselyJSON(@PathVariable int id) {
 		List<Kysely> kyselyt = kdao.haeKysely(id);
 		
-		//Todo: Lis‰‰ oikea virhekoodi jos tulee muulla methodilla kuin POST
+		//Todo: Lis‰‰ oikea virhekoodi jos tulee muulla methodilla kuin GET
 		return kyselyt;
 	}
 	
@@ -45,7 +47,7 @@ public class PalauteController {
 	public @ResponseBody List<Kyselyt> haeKaikkiKyselytJSON() {
 		List<Kyselyt> kyselyt = kyselytdao.haeKaikkiKyselyt();
 		
-		//Todo: Lis‰‰ oikea virhekoodi jos tulee muulla methodilla kuin POST
+		//Todo: Lis‰‰ oikea virhekoodi jos tulee muulla methodilla kuin GET
 		return kyselyt;
 	}
 	
@@ -53,7 +55,7 @@ public class PalauteController {
 	public @ResponseBody List<Kyselyt> haeKaikkideployedJSON() {
 		List<Kyselyt> kyselyt = kyselytdao.haeKaikkiDeployedKyselyt();
 		
-		//Todo: Lis‰‰ oikea virhekoodi jos tulee muulla methodilla kuin POST
+		//Todo: Lis‰‰ oikea virhekoodi jos tulee muulla methodilla kuin GET
 		return kyselyt;
 	}
 	
@@ -65,17 +67,20 @@ public class PalauteController {
 		return kyselyt;
 	}
 	
-	
+	@ResponseStatus(value = HttpStatus.OK)
 	@RequestMapping(value="/kyselyt/{id}/deploy", method=RequestMethod.POST)
 	public void kyselydeploy(@PathVariable int id) {
 
+		//Todo: Lis‰‰ oikea virhekoodi jos tulee muulla methodilla kuin POST
 		kyselytdao.deployKysely(id);
 		
 	}	
 	
+	@ResponseStatus(value = HttpStatus.OK)
 	@RequestMapping(value="/kyselyt/{id}/undeploy", method=RequestMethod.DELETE)
 	public void kyselyUndeploy(@PathVariable int id) {
 
+		//Todo: Lis‰‰ oikea virhekoodi jos tulee muulla methodilla kuin DELETE
 		kyselytdao.UndeployKysely(id); 
 		
 	}	
