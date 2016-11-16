@@ -5,13 +5,13 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import fi.sos.bean.Kysely;
+import fi.sos.bean.Kyselyt;
 
-public class KyselytRowMapper implements RowMapper<Kysely> {
+public class KyselytRowMapper implements RowMapper<Kyselyt> {
 
-	public Kysely mapRow(ResultSet rs, int rowNum) throws SQLException {
+	public Kyselyt mapRow(ResultSet rs, int rowNum) throws SQLException {
 		
-		Kysely k = new Kysely();
+		Kyselyt k = new Kyselyt();
 		
 		k.setKysely_id(rs.getInt("kysely_id"));
 		k.setKysely_nimi(rs.getString("kysely_nimi"));		

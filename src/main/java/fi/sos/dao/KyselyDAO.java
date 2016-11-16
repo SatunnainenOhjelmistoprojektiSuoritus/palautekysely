@@ -33,14 +33,5 @@ public class KyselyDAO {
 		return kyselyt;
 	}
 	
-	public List<Kysely> haeKaikkiKyselyt() {
-
-		String sql = "select * from kysely"; // where deployed = true; kun ominaisuus toiminnassa
-		RowMapper<Kysely> mapper = new KyselytRowMapper();
-		List<Kysely> kyselyt = jdbcTemplate.query(sql, mapper);
-
-		return kyselyt;
-	}
-	
 	
 }

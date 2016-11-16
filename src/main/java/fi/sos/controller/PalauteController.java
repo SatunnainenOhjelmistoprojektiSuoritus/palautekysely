@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import fi.sos.bean.Kysely;
+import fi.sos.bean.Kyselyt;
 import fi.sos.bean.Vastaus;
 import fi.sos.dao.KyselyDAO;
+import fi.sos.dao.KyselytDAO;
 import fi.sos.dao.KysymysDAO;
 import fi.sos.dao.VastausDAO;
 
@@ -28,6 +30,9 @@ public class PalauteController {
 	@Inject
 	KysymysDAO kydao;
 	
+	@Inject
+	KyselytDAO kyselytdao;
+	
 	@RequestMapping(value="/kyselyt/{id}", method=RequestMethod.GET)
 	public @ResponseBody List<Kysely> haeKyselyJSON(@PathVariable int id) {
 		List<Kysely> kyselyt = kdao.haeKysely(id);
@@ -37,18 +42,52 @@ public class PalauteController {
 	}
 	
 	@RequestMapping(value="/kyselyt", method=RequestMethod.GET)
-	public @ResponseBody List<Kysely> haeKaikkiKyselytJSON() {
-		List<Kysely> kyselyt = kdao.haeKaikkiKyselyt();
+	public @ResponseBody List<Kyselyt> haeKaikkiKyselytJSON() {
+		List<Kyselyt> kyselyt = kyselytdao.haeKaikkiKyselyt();
 		
 		//Todo: Lis‰‰ oikea virhekoodi jos tulee muulla methodilla kuin POST
 		return kyselyt;
 	}
 	
-	@RequestMapping(value="/vastaukset/{id}", method=RequestMethod.GET)
-	public @ResponseBody List<Vastaus> haeKaikkiVastaukset(@PathVariable int id) {
-		List<Vastaus> kyselyt = vdao.haeVastaus(id);
+	@RequestMapping(value="/kyselyt/deployed", method=RequestMethod.GET)
+	public @ResponseBody List<Kyselyt> haeKaikkideployedJSON() {
+		List<Kyselyt> kyselyt = kyselytdao.haeKaikkiDeployedKyselyt();
+		
 		//Todo: Lis‰‰ oikea virhekoodi jos tulee muulla methodilla kuin POST
 		return kyselyt;
+	}
+	
+	@RequestMapping(value="/kyselyt/undeployed", method=RequestMethod.GET)
+	public @ResponseBody List<Kyselyt> haeKaikkiUndeployedKyselytJSON() {
+		List<Kyselyt> kyselyt = kyselytdao.haeKaikkiUnDeployedKyselyt();
+		
+		//Todo: Lis‰‰ oikea virhekoodi jos tulee muulla methodilla kuin POST
+		return kyselyt;
+	}
+	
+	
+	@RequestMapping(value="/kyselyt/{id}/deploy", method=RequestMethod.POST)
+	public void kyselydeploy(@PathVariable int id) {
+
+		kyselytdao.deployKysely(id);
+		
+	}	
+	
+	@RequestMapping(value="/kyselyt/{id}/undeploy", method=RequestMethod.DELETE)
+	public void kyselyUndeploy(@PathVariable int id) {
+
+		kyselytdao.UndeployKysely(id); 
+		
+	}	
+	
+	
+	
+	
+	@RequestMapping(value="/vastaukset/{id}", method=RequestMethod.GET)
+	public @ResponseBody List<Vastaus> haeKaikkiVastaukset(@PathVariable int id) {
+		List<Vastaus> vastaukset = vdao.haeVastaus(id);
+		//Todo: Lis‰‰ oikea virhekoodi jos tulee muulla methodilla kuin POST
+		return vastaukset;
 	}
 	
 	
