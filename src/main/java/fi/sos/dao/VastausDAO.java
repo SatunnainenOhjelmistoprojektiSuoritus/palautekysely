@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import fi.sos.bean.Vastaus;
+import fi.sos.bean.Vastaukset;
 
 @Repository
 public class VastausDAO {
@@ -25,12 +25,12 @@ public class VastausDAO {
 	}
 
 
-	public List<Vastaus> haeVastaus(int kysymys_id) {
+	public List<Vastaukset> haeVastaukset(int kysely_id) {
 
-		String sql = "";
-		RowMapper<Vastaus> mapper = new VastausRowMapper();
-		List<Vastaus> kyselyt = jdbcTemplate.query(sql, mapper);
+		String sql = "select * from vastaus natural join kysymys where kysely_id = " + kysely_id + ";";
+		RowMapper<Vastaukset> mapper = new VastauksetRowMapper();
+		List<Vastaukset> vastaukset = jdbcTemplate.query(sql, mapper);
 
-		return kyselyt;
+		return vastaukset;
 	}
 }

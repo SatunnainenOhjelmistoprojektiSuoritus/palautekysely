@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import fi.sos.bean.Kysely;
 import fi.sos.bean.Kyselyt;
-import fi.sos.bean.Vastaus;
+import fi.sos.bean.Vastaukset;
 import fi.sos.dao.KyselyDAO;
 import fi.sos.dao.KyselytDAO;
 import fi.sos.dao.KysymysDAO;
@@ -89,8 +89,8 @@ public class PalauteController {
 	
 	
 	@RequestMapping(value="/vastaukset/{id}", method=RequestMethod.GET)
-	public @ResponseBody List<Vastaus> haeKaikkiVastaukset(@PathVariable int id) {
-		List<Vastaus> vastaukset = vdao.haeVastaus(id);
+	public @ResponseBody List<Vastaukset> haeKaikkiVastaukset(@PathVariable int id) {
+		List<Vastaukset> vastaukset = vdao.haeVastaukset(id);
 		//Todo: Lis‰‰ oikea virhekoodi jos tulee muulla methodilla kuin POST
 		return vastaukset;
 	}
