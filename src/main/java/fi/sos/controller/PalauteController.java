@@ -18,6 +18,7 @@ import fi.sos.bean.Vastaukset;
 import fi.sos.dao.KyselyDAO;
 import fi.sos.dao.KyselytDAO;
 import fi.sos.dao.KysymysDAO;
+import fi.sos.dao.VastauksetDAO;
 import fi.sos.dao.VastausDAO;
 
 @Controller
@@ -27,6 +28,9 @@ public class PalauteController {
 
 	@Inject
 	VastausDAO vdao;
+	
+	@Inject
+	VastauksetDAO vastauksetdao;
 
 	@Inject
 	KysymysDAO kydao;
@@ -101,9 +105,9 @@ public class PalauteController {
 
 	}
 
-	
+
 	@RequestMapping(value = "/vastaukset/{id}", produces = "application/json", method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> haeKaikkiVastaukset(@PathVariable int id) {
+	public @ResponseBody ResponseEntity<?> haeVastaukset(@PathVariable int id) {
 		List<Vastaukset> vastaukset = vdao.haeVastaukset(id);
 		
 		//Jos ei löydy yhtään vastausta kyselyä, palauta 404
@@ -112,6 +116,18 @@ public class PalauteController {
 		}
 		return new ResponseEntity<Object>(vastaukset, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/vastaukset/", produces = "application/json", method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<?> haeKaikkiVastaukset() {
+		List<Vastaukset> vastaukset = vastauksetdao.haeKaikkiVastaukset();
+		
+		//Jos ei löydy yhtään vastausta kyselyä, palauta 404
+		if (vastaukset.size() == 0) {
+			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Object>(vastaukset, HttpStatus.OK);
+	}
+	
 		
 
 }
