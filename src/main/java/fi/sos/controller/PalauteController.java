@@ -19,7 +19,11 @@ import fi.sos.bean.Vastaukset;
 import fi.sos.dao.KyselyDAO;
 import fi.sos.dao.KyselytDAO;
 import fi.sos.dao.KysymysDAO;
+
 import fi.sos.dao.LoginDAO;
+
+import fi.sos.dao.VastauksetDAO;
+
 import fi.sos.dao.VastausDAO;
 
 @Controller
@@ -29,6 +33,9 @@ public class PalauteController {
 
 	@Inject
 	VastausDAO vdao;
+
+	@Inject
+	VastauksetDAO vastauksetdao;
 
 	@Inject
 	KysymysDAO kydao;
@@ -64,7 +71,6 @@ public class PalauteController {
 		return new ResponseEntity<Object>(kyselyt, HttpStatus.OK);
 	}
 
-	
 	@RequestMapping(value = "/kyselyt/deployed", produces = "application/json", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> haeKaikkideployedJSON() {
 		List<Kyselyt> kyselyt = kyselytdao.haeKaikkiDeployedKyselyt();
@@ -80,19 +86,18 @@ public class PalauteController {
 	public @ResponseBody ResponseEntity<?> haeKaikkiUndeployedKyselytJSON() {
 		List<Kyselyt> kyselyt = kyselytdao.haeKaikkiUnDeployedKyselyt();
 
-		//Jos ei löydy yhtään undeployattyä kyselyä, palauta 404
+		// Jos ei löydy yhtään undeployattyä kyselyä, palauta 404
 		if (kyselyt.size() == 0) {
 			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Object>(kyselyt, HttpStatus.OK);
 	}
-	
 
 	@RequestMapping(value = "/kyselyt/{id}/deploy", produces = "application/json", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> kyselyDeploy(@PathVariable int id) {
 
 		kyselytdao.deployKysely(id);
-		
+
 		return new ResponseEntity<Object>(HttpStatus.OK);
 
 	}
@@ -101,22 +106,33 @@ public class PalauteController {
 	public @ResponseBody ResponseEntity<?> kyselyUndeploy(@PathVariable int id) {
 
 		kyselytdao.UndeployKysely(id);
-		
+
 		return new ResponseEntity<Object>(HttpStatus.OK);
 
 	}
 
-	
 	@RequestMapping(value = "/vastaukset/{id}", produces = "application/json", method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> haeKaikkiVastaukset(@PathVariable int id) {
+	public @ResponseBody ResponseEntity<?> haeVastaukset(@PathVariable int id) {
 		List<Vastaukset> vastaukset = vdao.haeVastaukset(id);
-		
-		//Jos ei löydy yhtään vastausta kyselyä, palauta 404
+
+		// Jos ei löydy yhtään vastausta kyselyä, palauta 404
 		if (vastaukset.size() == 0) {
 			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Object>(vastaukset, HttpStatus.OK);
 	}
+
+	@RequestMapping(value = "/vastaukset/", produces = "application/json", method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<?> haeKaikkiVastaukset() {
+		List<Vastaukset> vastaukset = vastauksetdao.haeKaikkiVastaukset();
+
+		// Jos ei löydy yhtään vastausta kyselyä, palauta 404
+		if (vastaukset.size() == 0) {
+			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Object>(vastaukset, HttpStatus.OK);
+	}
+
 	
 	@RequestMapping(value = "/login", produces = "application/json", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> authAccess(@RequestBody String login, String password) {
@@ -133,5 +149,17 @@ public class PalauteController {
 		return new ResponseEntity<Object>(authAccess, HttpStatus.OK);
 	}
 		
+
+
+	@RequestMapping(value = "/kyselyt/{id}/lisaaVastaus/{vastaus}", produces = "application/json", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<?> kyselyLisaaVastaus(
+			@PathVariable int id, @PathVariable String vastaus) {
+
+		vdao.lisaaVastaus(id, vastaus);
+
+		return new ResponseEntity<Object>(HttpStatus.OK);
+
+	}
+
 
 }
