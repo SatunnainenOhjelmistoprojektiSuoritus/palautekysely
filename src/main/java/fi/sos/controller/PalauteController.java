@@ -7,23 +7,23 @@ import javax.inject.Inject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import fi.sos.bean.Kysely;
 import fi.sos.bean.Kyselyt;
+import fi.sos.bean.Omistaja;
 import fi.sos.bean.Vastaukset;
 import fi.sos.dao.KyselyDAO;
 import fi.sos.dao.KyselytDAO;
 import fi.sos.dao.KysymysDAO;
-
 import fi.sos.dao.LoginDAO;
-
 import fi.sos.dao.VastauksetDAO;
-
 import fi.sos.dao.VastausDAO;
 
 @Controller
@@ -134,12 +134,12 @@ public class PalauteController {
 	}
 
 	
-	@RequestMapping(value = "/login", produces = "application/json", method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> authAccess(@RequestBody String login, String password) {
+	@RequestMapping(value = "/login", produces = "application/json", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<?> authAccess(@RequestParam("login") String login, @RequestParam("password") String password) {
 
 		boolean authAccess = logindao.authAccess(login, password);
-		System.err.println(authAccess);
-		System.err.println(login + " " + password);
+		//System.err.println(authAccess);
+		//System.err.println(login + " " + password);
 
 		// Jos ei yhtään kyselyä löydy, palauta 404
 		if (authAccess == false) {

@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import fi.sos.bean.Omistaja;
 
@@ -40,9 +41,13 @@ public class LoginDAO {
 		
 	}
 
-	public boolean authAccess(String login, String password) {
+	public boolean authAccess(@ModelAttribute String login, @ModelAttribute String password) {
+		
+		
 		
 		boolean checkLogin = false;
+		
+		System.out.println("*****************" + login + "\n*********************" + password);
 		
 		try{
 		String sql = "select omistaja_login, omistaja_password from omistaja where omistaja_login = '" + login + "' AND omistaja_password ='" + password + "';";
@@ -58,7 +63,7 @@ public class LoginDAO {
 			checkLogin = true;
 		}
 		}catch (Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			checkLogin = false;
 		}
 		
