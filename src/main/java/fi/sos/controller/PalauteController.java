@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,6 +19,7 @@ import fi.sos.bean.Vastaukset;
 import fi.sos.dao.KyselyDAO;
 import fi.sos.dao.KyselytDAO;
 import fi.sos.dao.KysymysDAO;
+import fi.sos.dao.LoginDAO;
 import fi.sos.dao.VastausDAO;
 
 @Controller
@@ -33,6 +35,9 @@ public class PalauteController {
 
 	@Inject
 	KyselytDAO kyselytdao;
+	
+	@Inject
+	LoginDAO logindao;
 
 	@RequestMapping(value = "/kyselyt/{id}", produces = "application/json", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> haeKyselyJSON(@PathVariable int id) {
@@ -111,6 +116,21 @@ public class PalauteController {
 			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Object>(vastaukset, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/login", produces = "application/json", method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<?> authAccess(@RequestBody String login, String password) {
+
+		boolean authAccess = logindao.authAccess(login, password);
+		System.err.println(authAccess);
+		System.err.println(login + " " + password);
+
+		// Jos ei yhtään kyselyä löydy, palauta 404
+		if (authAccess == false) {
+			return new ResponseEntity<String>(HttpStatus.UNAUTHORIZED);
+		}
+
+		return new ResponseEntity<Object>(authAccess, HttpStatus.OK);
 	}
 		
 
