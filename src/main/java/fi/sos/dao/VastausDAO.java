@@ -33,4 +33,11 @@ public class VastausDAO {
 
 		return vastaukset;
 	}
+	
+	public void lisaaVastaus(int kysymys_id, String vastaus){
+		String sql = "INSERT INTO vastaus (kysymys_id, vastaus) values ('" + kysymys_id + "', '" + vastaus + "');";
+		System.out.println(sql);
+		jdbcTemplate.execute(sql);
+	}
+	
 }

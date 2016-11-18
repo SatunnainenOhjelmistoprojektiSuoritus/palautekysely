@@ -113,5 +113,14 @@ public class PalauteController {
 		return new ResponseEntity<Object>(vastaukset, HttpStatus.OK);
 	}
 		
+	@RequestMapping(value = "/kyselyt/{id}/lisaaVastaus/{vastaus}", produces = "application/json", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<?> kyselyLisaaVastaus(@PathVariable int id,@PathVariable String vastaus) {
+System.out.println(vastaus);
+	 vdao.lisaaVastaus(id, vastaus);
+		return new ResponseEntity<Object>(HttpStatus.OK);
+
+		
+	}
+	
 
 }
