@@ -5,7 +5,7 @@ public class Kysely {
 	private int kysely_id;
 	private String kysely_nimi;
 	private boolean deployed;
-	private Kysymys kysymys;	
+	private Kysymys kysymys;
 	
 	public Kysymys getKysymys() {
 		return kysymys;
@@ -60,6 +60,10 @@ public class Kysely {
 				+ kysely_nimi + ", deployed=" + deployed + ", kysymys="
 				+ kysymys + "]";
 	}
+
+
+
+	
 	
 
 }

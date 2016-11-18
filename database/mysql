@@ -23,13 +23,27 @@ CREATE TABLE kysely (
 	kysely_id INT AUTO_INCREMENT NOT NULL,
 	kysely_nimi VARCHAR(255),
 	kysely_deployed boolean NOT NULL default 0,
-	PRIMARY KEY(kysely_id)
+	kysely_kuvaus VARCHAR(255),
+	omistaja_id INT NOT NULL,
+	PRIMARY KEY(kysely_id),
+	FOREIGN KEY (omistaja_id) REFERENCES omistaja(omistaja_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE omistaja (
+	omistaja_id INT AUTO_INCREMENT NOT NULL,
+	omistaja_login VARCHAR(255) NOT NULL,
+	omistaja_password VARCHAR(255) NOT NULL,
+	PRIMARY KEY (omistaja_id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 INSERT INTO kysymys
 	(kysely_id, kysymys, kysymys_tyyppi)
 values
-	('1', 'Testikysymys', 'String');
+	('1', 'Testikysymys', 'String'),
+	('2', 'Testikysymys', 'String'),
+	('3', 'Testikysymys', 'String'),
+	('4', 'Testikysymys', 'String');
 	
 INSERT INTO vastaus
 	(kysymys_id, vastaus)
@@ -37,18 +51,23 @@ values
 	(1,'Jaa'),
 	(2,'Joo'),
 	(3,'Juusto'),
-	(1,'Ehkä'),
-	(2,'5'),
-	(3,'Ravista uudelleen'),
-	(4,'Ei');
+	(4,'Ehkä'),
+	(1,'5'),
+	(2,'Ravista uudelleen'),
+	(3,'Ei');
 	
 INSERT INTO kysely
-	(kysely_nimi)
+	(kysely_nimi, kysely_kuvaus, omistaja_id)
 values
-	('Kysely1'),
-	('Tyytyväisyyskysely'),
-	('Testikysely1'),
-	('Testikysely2');
+	('Kysely1', 'Esimerkkikuvaus', 1),
+	('Tyytyväisyyskysely', 'Esimerkkikuvaus', 1),
+	('Testikysely1', 'Esimerkkikuvaus', 1),
+	('Testikysely2', 'Esimerkkikuvaus', 1);
+	
+INSERT INTO omistaja
+	(omistaja_login, omistaja_password)
+values
+	('esimerkkilogin', 'esimerkkipassword');
 	
 
 // Hakee kaikki kyselyn kysymykset

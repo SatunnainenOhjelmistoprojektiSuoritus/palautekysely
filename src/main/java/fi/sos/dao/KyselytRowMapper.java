@@ -15,7 +15,9 @@ public class KyselytRowMapper implements RowMapper<Kyselyt> {
 		
 		k.setKysely_id(rs.getInt("kysely_id"));
 		k.setKysely_nimi(rs.getString("kysely_nimi"));		
-		k.setDeployed(rs.getBoolean("kysely_deployed"));		
+		k.setDeployed(rs.getBoolean("kysely_deployed"));
+		k.setKysely_kuvaus(rs.getString("kysely_kuvaus"));
+		k.setOmistaja_id(rs.getInt("omistaja_id"));
 		
 		return k;
 	}
