@@ -72,7 +72,7 @@
 			<td><a href="kyselyt/1/lisaaVastaus/">/kyselyt/{id}/lisaaVastaus/</a> </td>
 			<td>
 <pre>POST /kysely/kyselyt/1/lisaaVastaus HTTP/1.1
-Host: localhost:8080
+Host: proto433.haaga-helia.fi:8080
 Content-Type: application/json
 Cache-Control: no-cache
 Postman-Token: e1b081ed-52b1-9f51-cd27-28dc29b803fa
@@ -90,7 +90,7 @@ Postman-Token: e1b081ed-52b1-9f51-cd27-28dc29b803fa
 			<td><a href="login">/login/</a> </td>
 			<td>
 <pre>POST /kysely/login HTTP/1.1
-Host: localhost:8080
+Host: proto433.haaga-helia.fi:8080
 Content-Type: application/json
 Cache-Control: no-cache
 Postman-Token: 7f062817-ddfe-26af-d09b-b5ff79b33c1f
