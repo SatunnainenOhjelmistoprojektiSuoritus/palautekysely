@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import fi.sos.bean.Kysely;
 import fi.sos.bean.Kyselyt;
+import fi.sos.bean.Kysymys;
 import fi.sos.bean.Omistaja;
 import fi.sos.bean.Vastaukset;
 import fi.sos.bean.Vastaus;
@@ -156,6 +157,15 @@ public class PalauteController {
 	public @ResponseBody ResponseEntity<?> kyselyLisaaVastaus(@PathVariable int id, @RequestBody Vastaus vastaus) {
 
 		vdao.lisaaVastaus(id, vastaus.getVastaus());
+
+		return new ResponseEntity<Object>(HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/kyselyt/{id}/lisaaKysymys", produces = "application/json", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<?> kyselyLisaaKysymys(@PathVariable int id, @RequestBody Kysymys kysymys) {
+
+		kydao.lisaaKysymys(id, kysymys.getKysymys(), kysymys.getKysymys_tyyppi());
 
 		return new ResponseEntity<Object>(HttpStatus.OK);
 
