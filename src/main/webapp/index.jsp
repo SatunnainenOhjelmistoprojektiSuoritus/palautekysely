@@ -93,16 +93,16 @@ Postman-Token: e1b081ed-52b1-9f51-cd27-28dc29b803fa
 Host: localhost:8080
 Content-Type: application/json
 Cache-Control: no-cache
-Postman-Token: 881e5df1-4a31-7c8a-4b09-bea3f1026c3f
+Postman-Token: 7f062817-ddfe-26af-d09b-b5ff79b33c1f
 
 {
-"login" : "esimerkkilogin",
-"password" : "esimerkkipassword"
+"login" : "test",
+"password" : "ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff"
 }</pre> 
 			</td>
 			<td>HTTP 200 OK </td>
 			<td>401 UNAUTHORIZED </td>
-			<td>Returns true/false on user login </td>
+			<td>Returns true/false on user login. Uses SHA512 encryption </td>
 		</tr>
 		<tr>
 			<td> </td>
