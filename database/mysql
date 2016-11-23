@@ -69,6 +69,11 @@ INSERT INTO omistaja
 values
 	('esimerkkilogin', 'esimerkkipassword');
 	
+INSERT INTO omistaja
+	(omistaja_login, omistaja_password, omistaja_salt)
+values
+	('siteadmin', 'RepypQ1dd4KBho4Uj/IqioNVh6QU5N4fq55o1mCOl/fiwKcRxTWoQrdB8Kao8P2mk9j/6vXNrvOZ5eDO2frQNw==', 'si+jATMj3DE=');
+	
 ALTER TABLE omistaja
 ADD omistaja_salt VARCHAR(255);
 	
