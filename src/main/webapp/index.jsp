@@ -61,7 +61,7 @@
 		</tr>
 		<tr>
 			<td>GET </td>
-			<td><a href="/vastaukset/">/vastaukset/</a>   </td>
+			<td><a href="vastaukset/">/vastaukset/</a>   </td>
 			<td>Empty </td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 405, METHOD NOT SUPPORTED </td>
@@ -69,7 +69,7 @@
 		</tr>
 		<tr>
 			<td>POST </td>
-			<td><a href="/kyselyt/1/lisaaVastaus/">/kyselyt/{id}/lisaaVastaus/</a> </td>
+			<td><a href="kyselyt/1/lisaaVastaus/">/kyselyt/{id}/lisaaVastaus/</a> </td>
 			<td>
 <pre>POST /kysely/kyselyt/1/lisaaVastaus HTTP/1.1
 Host: localhost:8080
@@ -87,7 +87,7 @@ Postman-Token: e1b081ed-52b1-9f51-cd27-28dc29b803fa
 		</tr>
 		<tr>
 			<td>POST </td>
-			<td><a href="/login">/login/</a> </td>
+			<td><a href="login">/login/</a> </td>
 			<td>
 <pre>POST /kysely/login HTTP/1.1
 Host: localhost:8080
