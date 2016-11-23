@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import fi.sos.bean.Vastaukset;
-import fi.sos.bean.Vastaus;
 
 @Repository
 public class VastausDAO {
