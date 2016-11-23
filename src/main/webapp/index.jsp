@@ -109,7 +109,7 @@ Postman-Token: 7f062817-ddfe-26af-d09b-b5ff79b33c1f
 			<td><a href="kyselyt/1/lisaaKysymys">/kyselyt/{id}/lisaaKysymys</a> </td>
 			<td>
 <pre>POST /kysely//kyselyt/1/lisaaKysymys HTTP/1.1
-Host: localhost:8080
+Host: proto433.haaga-helia.fi
 Content-Type: application/json
 Cache-Control: no-cache
 Postman-Token: 6451eaf8-8e89-0d2e-6ee1-688b0e8a456d
