@@ -1,20 +1,22 @@
 package fi.sos.bean;
 
 public class Omistaja {
-	
+
 	private int omistaja_id;
 	private String login;
 	private String password;
-	
+	private String salt;
+
 	public Omistaja() {
 		super();
 	}
 
-	public Omistaja(int omistaja_id, String login, String password) {
+	public Omistaja(int omistaja_id, String login, String password, String salt) {
 		super();
 		this.omistaja_id = omistaja_id;
 		this.login = login;
 		this.password = password;
+		this.salt = salt;
 	}
 
 	public int getOmistaja_id() {
@@ -41,14 +43,18 @@ public class Omistaja {
 		this.password = password;
 	}
 
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+
 	@Override
 	public String toString() {
 		return "Omistaja [omistaja_id=" + omistaja_id + ", login=" + login
-				+ ", password=" + password + "]";
+				+ ", password=" + password + ", salt=" + salt + "]";
 	}
-
-
-	
-	
 
 }
