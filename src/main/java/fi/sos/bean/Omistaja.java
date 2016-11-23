@@ -3,19 +3,18 @@ package fi.sos.bean;
 public class Omistaja {
 	
 	private int omistaja_id;
-	private String omistaja_login;
-	private String omistaja_password;
+	private String login;
+	private String password;
 	
 	public Omistaja() {
 		super();
 	}
 
-	public Omistaja(int omistaja_id, String omistaja_login,
-			String omistaja_password) {
+	public Omistaja(int omistaja_id, String login, String password) {
 		super();
 		this.omistaja_id = omistaja_id;
-		this.omistaja_login = omistaja_login;
-		this.omistaja_password = omistaja_password;
+		this.login = login;
+		this.password = password;
 	}
 
 	public int getOmistaja_id() {
@@ -26,30 +25,29 @@ public class Omistaja {
 		this.omistaja_id = omistaja_id;
 	}
 
-	public String getOmistaja_login() {
-		return omistaja_login;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setOmistaja_login(String omistaja_login) {
-		this.omistaja_login = omistaja_login;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
-	public String getOmistaja_password() {
-		return omistaja_password;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setOmistaja_password(String omistaja_password) {
-		this.omistaja_password = omistaja_password;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
 	public String toString() {
-		return "Omistaja [omistaja_id=" + omistaja_id + ", omistaja_login="
-				+ omistaja_login + ", omistaja_password=" + omistaja_password
-				+ "]";
+		return "Omistaja [omistaja_id=" + omistaja_id + ", login=" + login
+				+ ", password=" + password + "]";
 	}
-	
-	
+
+
 	
 	
 

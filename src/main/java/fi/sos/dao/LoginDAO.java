@@ -33,15 +33,15 @@ public class LoginDAO {
 
 		public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Omistaja omistaja = new Omistaja();
-			omistaja.setOmistaja_login(rs.getString("omistaja_login"));
-			omistaja.setOmistaja_password(rs.getString("omistaja_password"));
+			omistaja.setLogin(rs.getString("omistaja_login"));
+			omistaja.setPassword(rs.getString("omistaja_password"));
 			return omistaja;
 		}
 		
 		
 	}
 
-	public boolean authAccess(@ModelAttribute String login, @ModelAttribute String password) {
+	public boolean authAccess(String login, String password) {
 		
 		
 		
@@ -55,8 +55,8 @@ public class LoginDAO {
 		Omistaja omistaja = (Omistaja)getJdbcTemplate().queryForObject(sql, new LoginRowMapper());
 		
 		
-		String userKannasta = omistaja.getOmistaja_login();
-		String passwordKannasta = omistaja.getOmistaja_password();
+		String userKannasta = omistaja.getLogin();
+		String passwordKannasta = omistaja.getPassword();
 		
 		if (login.equals(userKannasta) && password.equals(passwordKannasta)){
 			

@@ -19,6 +19,7 @@ import fi.sos.bean.Kysely;
 import fi.sos.bean.Kyselyt;
 import fi.sos.bean.Omistaja;
 import fi.sos.bean.Vastaukset;
+import fi.sos.bean.Vastaus;
 import fi.sos.dao.KyselyDAO;
 import fi.sos.dao.KyselytDAO;
 import fi.sos.dao.KysymysDAO;
@@ -135,15 +136,15 @@ public class PalauteController {
 
 	
 	@RequestMapping(value = "/login", produces = "application/json", method = RequestMethod.POST)
-	public @ResponseBody ResponseEntity<?> authAccess(@RequestParam("login") String login, @RequestParam("password") String password) {
+	public @ResponseBody ResponseEntity<?> authAccess(@RequestBody Omistaja omistaja) {		
 
-		boolean authAccess = logindao.authAccess(login, password);
+		boolean authAccess = logindao.authAccess(omistaja.getLogin(), omistaja.getPassword());
 		//System.err.println(authAccess);
 		//System.err.println(login + " " + password);
 
 		// Jos ei yhtään kyselyä löydy, palauta 404
 		if (authAccess == false) {
-			return new ResponseEntity<String>(HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<Object>(authAccess, HttpStatus.UNAUTHORIZED);
 		}
 
 		return new ResponseEntity<Object>(authAccess, HttpStatus.OK);
@@ -151,15 +152,15 @@ public class PalauteController {
 		
 
 
-	@RequestMapping(value = "/kyselyt/{id}/lisaaVastaus/{vastaus}", produces = "application/json", method = RequestMethod.POST)
-	public @ResponseBody ResponseEntity<?> kyselyLisaaVastaus(
-			@PathVariable int id, @PathVariable String vastaus) {
+	@RequestMapping(value = "/kyselyt/{id}/lisaaVastaus", produces = "application/json", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<?> kyselyLisaaVastaus(@PathVariable int id, @RequestBody Vastaus vastaus) {
 
-		vdao.lisaaVastaus(id, vastaus);
+		vdao.lisaaVastaus(id, vastaus.getVastaus());
 
 		return new ResponseEntity<Object>(HttpStatus.OK);
 
 	}
 
+	
 
 }
