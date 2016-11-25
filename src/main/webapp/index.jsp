@@ -75,7 +75,6 @@
 Host: proto433.haaga-helia.fi:8080
 Content-Type: application/json
 Cache-Control: no-cache
-Postman-Token: e1b081ed-52b1-9f51-cd27-28dc29b803fa
 
 {
 "vastaus" : "esimerkkivastaus"
@@ -93,7 +92,6 @@ Postman-Token: e1b081ed-52b1-9f51-cd27-28dc29b803fa
 Host: proto433.haaga-helia.fi:8080
 Content-Type: application/json
 Cache-Control: no-cache
-Postman-Token: 7f062817-ddfe-26af-d09b-b5ff79b33c1f
 
 {
 "login" : "test",
@@ -112,7 +110,6 @@ Postman-Token: 7f062817-ddfe-26af-d09b-b5ff79b33c1f
 Host: proto433.haaga-helia.fi
 Content-Type: application/json
 Cache-Control: no-cache
-Postman-Token: 6451eaf8-8e89-0d2e-6ee1-688b0e8a456d
 
 {
 "kysymys" : "juutalaisia, onko heitä?",
