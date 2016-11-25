@@ -96,7 +96,13 @@ Cache-Control: no-cache
 {
 "login" : "test",
 "password" : "ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff"
-}</pre> 
+}
+{
+"login" : "siteadmin",
+"password" : "RepypQ1dd4KBho4Uj/IqioNVh6QU5N4fq55o1mCOl/fiwKcRxTWoQrdB8Kao8P2mk9j/6vXNrvOZ5eDO2frQNw=="
+}
+
+</pre> 
 			</td>
 			<td>HTTP 200 OK </td>
 			<td>401 UNAUTHORIZED </td>
