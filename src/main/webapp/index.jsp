@@ -68,6 +68,14 @@
 			<td>Fetch all responses to all questionnaires </td>
 		</tr>
 		<tr>
+			<td>GET </td>
+			<td><a href="vastaukset/1">/vastaukset/{id}</a>   </td>
+			<td>Questionnaires ID </td>
+			<td>HTTP 200 OK </td>
+			<td>HTTP 404, NOT FOUND </td>
+			<td>Fetch all responses to specific questionnaire </td>
+		</tr>
+		<tr>
 			<td>POST </td>
 			<td><a href="kyselyt/1/lisaaVastaus/">/kyselyt/{id}/lisaaVastaus/</a> </td>
 			<td>
