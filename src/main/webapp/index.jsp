@@ -100,9 +100,7 @@ Cache-Control: no-cache
 {
 "login" : "siteadmin",
 "password" : "RepypQ1dd4KBho4Uj/IqioNVh6QU5N4fq55o1mCOl/fiwKcRxTWoQrdB8Kao8P2mk9j/6vXNrvOZ5eDO2frQNw=="
-}
-
-</pre> 
+}</pre> 
 			</td>
 			<td>HTTP 200 OK </td>
 			<td>401 UNAUTHORIZED </td>

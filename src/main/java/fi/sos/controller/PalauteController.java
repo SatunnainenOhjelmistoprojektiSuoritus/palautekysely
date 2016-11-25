@@ -128,6 +128,7 @@ public class PalauteController {
 	 *  Hae kaikki vastaukset
 	 * 	===========================================================
 	*/
+	
 	@RequestMapping(value = "/vastaukset/{id}", produces = "application/json", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> haeVastaukset(@PathVariable int id) {
 		List<Vastaukset> vastaukset = vdao.haeVastaukset(id);
@@ -155,15 +156,12 @@ public class PalauteController {
 	 *  Login
 	 * ===========================================================
 	 */
-
 	
 	@RequestMapping(value = "/login", produces = "application/json", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> authAccess(@RequestBody Omistaja omistaja) {		
 
 		boolean authAccess = logindao.authAccess(omistaja.getLogin(), omistaja.getPassword());
-		//System.err.println(authAccess);
-		//System.err.println(login + " " + password);
-
+		
 		// Jos ei yhtään kyselyä löydy, palauta 404
 		if (authAccess == false) {
 			return new ResponseEntity<Object>(authAccess, HttpStatus.UNAUTHORIZED);
@@ -206,8 +204,6 @@ public class PalauteController {
 
 		return new ResponseEntity<Object>(HttpStatus.OK);
 
-	}
-
-	
+	}	
 
 }
