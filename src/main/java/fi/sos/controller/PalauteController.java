@@ -45,6 +45,16 @@ public class PalauteController {
 	
 	@Inject
 	LoginDAO logindao;
+	
+	/*
+	 * ===========================================================
+	 * Kyselyt
+	 * Hae yksi kysely
+	 * Hae Kaikki kyselyt
+	 * Hae kaikki deployed kyselyt
+	 * Hae kaikki undeployed kyselyt
+	 * ===========================================================
+	 */
 
 	@RequestMapping(value = "/kyselyt/{id}", produces = "application/json", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> haeKyselyJSON(@PathVariable int id) {
@@ -110,7 +120,14 @@ public class PalauteController {
 		return new ResponseEntity<Object>(HttpStatus.OK);
 
 	}
-
+	
+	/*
+	 * 	===========================================================
+	 * 	Vastaus
+	 *  Hae vastaus id:ll‰
+	 *  Hae kaikki vastaukset
+	 * 	===========================================================
+	*/
 	@RequestMapping(value = "/vastaukset/{id}", produces = "application/json", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> haeVastaukset(@PathVariable int id) {
 		List<Vastaukset> vastaukset = vdao.haeVastaukset(id);
@@ -132,6 +149,12 @@ public class PalauteController {
 		}
 		return new ResponseEntity<Object>(vastaukset, HttpStatus.OK);
 	}
+	
+	/*
+	 * ===========================================================
+	 *  Login
+	 * ===========================================================
+	 */
 
 	
 	@RequestMapping(value = "/login", produces = "application/json", method = RequestMethod.POST)
@@ -149,7 +172,14 @@ public class PalauteController {
 		return new ResponseEntity<Object>(authAccess, HttpStatus.OK);
 	}
 		
-
+	/*
+	 * ===========================================================
+	 * Lis‰ykset
+	 * Kyselyyn vastauksen lis‰‰minen
+	 * Kyselyyn kysymyksen lis‰‰minen
+	 * Uuden kyselyn lis‰‰minen
+	 * ===========================================================	 
+	 */
 
 	@RequestMapping(value = "/kyselyt/{id}/lisaaVastaus", produces = "application/json", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> kyselyLisaaVastaus(@PathVariable int id, @RequestBody Vastaus vastaus) {
@@ -171,8 +201,6 @@ public class PalauteController {
 	
 	@RequestMapping(value = "/kyselyt/lisaaKysely", produces = "application/json", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> kyselyLisaaKysely(@RequestBody Kysely kysely) {
-
-		System.out.println(kysely);
 		
 		kdao.lisaaKysely(kysely.getKysely_nimi(), kysely.getKuvaus(), kysely.getOmistaja_id());
 
