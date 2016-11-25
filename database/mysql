@@ -1,17 +1,97 @@
-CREATE TABLE kysely (
-	id SMALLINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	kysymys VARCHAR(255) NOT NULL,
-	monivastaus int(255),
-	avoin VARCHAR(255)
+
+----------------------------
+
+CREATE TABLE vastaus (
+	vastaus_id INT AUTO_INCREMENT NOT NULL,
+	kysymys_id INT NOT NULL,
+	vastaus VARCHAR(255) NOT NULL,
+	PRIMARY KEY (vastaus_id),
+	FOREIGN KEY (kysymys_id) REFERENCES kysymys(kysymys_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- MUISTA! console encoding latin1
+CREATE TABLE kysymys (
+	kysymys_id INT AUTO_INCREMENT NOT NULL,
+	kysely_id INT NOT NULL,
+	kysymys VARCHAR(255) NOT NULL,
+	kysymys_tyyppi VARCHAR(255),
+	PRIMARY KEY(kysymys_id),
+	FOREIGN KEY (kysely_id) REFERENCES kysely(kysely_id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO kysely
-	(kysymys, monivastaus, avoin)
+CREATE TABLE kysely (
+	kysely_id INT AUTO_INCREMENT NOT NULL,
+	kysely_nimi VARCHAR(255),
+	kysely_deployed boolean NOT NULL default 0,
+	kysely_kuvaus VARCHAR(255),
+	omistaja_id INT NOT NULL,
+	PRIMARY KEY(kysely_id),
+	FOREIGN KEY (omistaja_id) REFERENCES omistaja(omistaja_id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE omistaja (
+	omistaja_id INT AUTO_INCREMENT NOT NULL,
+	omistaja_login VARCHAR(255) NOT NULL,
+	omistaja_password VARCHAR(255) NOT NULL,
+	PRIMARY KEY (omistaja_id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+INSERT INTO kysymys
+	(kysely_id, kysymys, kysymys_tyyppi)
 values
-	('Oletko tyytyväinen?', '2', 'Joskus vähän emmätiiä'),
-	('Juusto vai kinkku päällimmäiseksi?', '1', 'Ainoa oikea vastaus'),
-	('Clinton vai Trump?', '5', 'En mä ees asu siel'),
-	('Äiti vai tytär?', '2', '...');
+	('1', 'Testikysymys', 'String'),
+	('2', 'Testikysymys', 'String'),
+	('3', 'Testikysymys', 'String'),
+	('4', 'Testikysymys', 'String');
+	
+INSERT INTO vastaus
+	(kysymys_id, vastaus)
+values
+	(1,'Jaa'),
+	(2,'Joo'),
+	(3,'Juusto'),
+	(4,'Ehkä'),
+	(1,'5'),
+	(2,'Ravista uudelleen'),
+	(3,'Ei');
+	
+INSERT INTO kysely
+	(kysely_nimi, kysely_kuvaus, omistaja_id)
+values
+	('Kysely1', 'Esimerkkikuvaus', 1),
+	('Tyytyväisyyskysely', 'Esimerkkikuvaus', 1),
+	('Testikysely1', 'Esimerkkikuvaus', 1),
+	('Testikysely2', 'Esimerkkikuvaus', 1);
+	
+INSERT INTO omistaja
+	(omistaja_login, omistaja_password)
+values
+	('esimerkkilogin', 'esimerkkipassword');
+	
+INSERT INTO omistaja
+	(omistaja_login, omistaja_password, omistaja_salt)
+values
+	('siteadmin', 'RepypQ1dd4KBho4Uj/IqioNVh6QU5N4fq55o1mCOl/fiwKcRxTWoQrdB8Kao8P2mk9j/6vXNrvOZ5eDO2frQNw==', 'si+jATMj3DE=');
+	
+ALTER TABLE omistaja
+ADD omistaja_salt VARCHAR(255);
+	
+
+// Hakee kaikki kyselyn kysymykset
+
+select * from kysymys natural join kysely where kysely_id = 1;
+
+// Hakee kaikki kyselyyn annetut vastaukset
+
+select * from vastaus natural join kysymys where kysely_id = 1;
+	
+	
+	
+	
+	
+	
+
+
+
+

@@ -2,49 +2,68 @@ package fi.sos.bean;
 
 public class Kysely {
 
-	private int id, monivastaus;
-	private String kysymys, avoin;
-	public Kysely(int id, int monivastaus, String kysymys, String avoin) {
-		super();
-		this.id = id;
-		this.monivastaus = monivastaus;
-		this.kysymys = kysymys;
-		this.avoin = avoin;
+	private int kysely_id;
+	private String kysely_nimi;
+	private boolean deployed;
+	private Kysymys kysymys;
+	
+	public Kysymys getKysymys() {
+		return kysymys;
 	}
+
+	public void setKysymys(Kysymys kysymys) {
+		this.kysymys = kysymys;
+	}
+
 	public Kysely() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public int getMonivastaus() {
-		return monivastaus;
-	}
-	public void setMonivastaus(int monivastaus) {
-		this.monivastaus = monivastaus;
-	}
-	public String getKysymys() {
-		return kysymys;
-	}
-	public void setKysymys(String kysymys) {
+
+
+	public Kysely(int kysely_id, String kysely_nimi, boolean deployed,
+			Kysymys kysymys) {
+		super();
+		this.kysely_id = kysely_id;
+		this.kysely_nimi = kysely_nimi;
+		this.deployed = deployed;
 		this.kysymys = kysymys;
 	}
-	public String getAvoin() {
-		return avoin;
+
+	public int getKysely_id() {
+		return kysely_id;
 	}
-	public void setAvoin(String avoin) {
-		this.avoin = avoin;
+
+	public void setKysely_id(int kysely_id) {
+		this.kysely_id = kysely_id;
 	}
+
+	public String getKysely_nimi() {
+		return kysely_nimi;
+	}
+
+	public void setKysely_nimi(String kysely_nimi) {
+		this.kysely_nimi = kysely_nimi;
+	}
+
+	public boolean isDeployed() {
+		return deployed;
+	}
+
+	public void setDeployed(boolean deployed) {
+		this.deployed = deployed;
+	}
+
 	@Override
 	public String toString() {
-		return "Kysely [id=" + id + ", monivastaus=" + monivastaus
-				+ ", kysymys=" + kysymys + ", avoin=" + avoin + "]";
+		return "Kysely [kysely_id=" + kysely_id + ", kysely_nimi="
+				+ kysely_nimi + ", deployed=" + deployed + ", kysymys="
+				+ kysymys + "]";
 	}
+
+
 
 	
 	
+
 }
