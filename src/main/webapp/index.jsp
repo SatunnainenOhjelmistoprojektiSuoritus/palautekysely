@@ -3,7 +3,7 @@
 <table  border = "1">
 	<thead>
 		<tr>
-			<th>Http Methdod </th>
+			<th>Http Method </th>
 			<th>Resource Endpoint </th>
 			<th>Input </th>
 			<th>Success Response </th>
