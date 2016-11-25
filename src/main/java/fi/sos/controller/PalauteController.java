@@ -168,6 +168,17 @@ public class PalauteController {
 		return new ResponseEntity<Object>(HttpStatus.OK);
 
 	}
+	
+	@RequestMapping(value = "/kyselyt/lisaaKysely", produces = "application/json", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<?> kyselyLisaaKysely(@RequestBody Kysely kysely) {
+
+		System.out.println(kysely);
+		
+		kdao.lisaaKysely(kysely.getKysely_nimi(), kysely.getKuvaus(), kysely.getOmistaja_id());
+
+		return new ResponseEntity<Object>(HttpStatus.OK);
+
+	}
 
 	
 

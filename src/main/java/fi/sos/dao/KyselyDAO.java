@@ -33,5 +33,11 @@ public class KyselyDAO {
 		return kyselyt;
 	}
 	
+	public void lisaaKysely(String kysely_nimi, String kuvaus, int omistaja_id) {
+
+		String sql = "INSERT INTO kysely (kysely_nimi, kysely_kuvaus, omistaja_id) VALUES ('" + kysely_nimi + "', '" + kuvaus + "', '" + omistaja_id + "');";
+		jdbcTemplate.execute(sql);
+	}
+	
 	
 }

@@ -126,12 +126,21 @@ Cache-Control: no-cache
 			<td>Insert new question to questionnaire </td>
 		</tr>
 		<tr>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
+			<td>POST </td>
+			<td><a href="kyselyt/lisaaKysely">/kyselyt/lisaaKysely</a> </td>
+			<td><pre>POST /kysely/kyselyt/lisaaKysely HTTP/1.1
+Host: proto433.haaga-helia.fi:8080/
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+"kysely_nimi" : "testi",
+"kuvaus" : "testikuvaus",
+"omistaja_id" : 1
+}</pre> </td>
+			<td>HTTP 200 OK </td>
+			<td>HTTP 405, METHOD NOT SUPPORTED </td>
+			<td>Adds a new questionnaire </td>
 		</tr>
 	</tbody>
 </table>

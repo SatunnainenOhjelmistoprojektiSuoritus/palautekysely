@@ -34,8 +34,6 @@ public class KysymysDAO {
 		return kyselyt;
 	}
 	
-	//mit‰h‰ m‰ oikee ees teen ei ssaaatana pit‰‰ks t‰s rukoilla jotai turingia tms.
-	
 	public void lisaaKysymys(int kysely_id, String kysymys, String kysymys_tyyppi) {
 
 		String sql = "INSERT INTO kysymys (kysely_id, Kysymys, Kysymys_tyyppi) VALUES ('" + kysely_id + "', '" + kysymys + "', '" + kysymys_tyyppi + "');";
