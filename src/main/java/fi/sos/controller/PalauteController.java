@@ -179,7 +179,7 @@ public class PalauteController {
 	 * ===========================================================	 
 	 */
 
-	@RequestMapping(value = "/kyselyt/{id}/lisaaVastaus", produces = "application/json", method = RequestMethod.POST)
+	@RequestMapping(value = "/kyselyt/kysymys/{id}/lisaaVastaus", produces = "application/json", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> kyselyLisaaVastaus(@PathVariable int id, @RequestBody Vastaus vastaus) {
 
 		vdao.lisaaVastaus(id, vastaus.getVastaus());

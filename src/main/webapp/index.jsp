@@ -86,10 +86,10 @@
 		</tr>
 		<tr>
 			<td>POST </td>
-			<td><a href="kyselyt/1/lisaaVastaus/">/kyselyt/{id}/lisaaVastaus/</a> </td>
-			<td>Answer to questionnaires question with specific ID. </td>
+			<td><a href="kyselyt/kysymys/1/lisaaVastaus">/kyselyt/kysymys/{id}/lisaaVastaus/</a> </td>
+			<td>Answer to questionnaires question with specific <b>QUESTION</b> ID. </td>
 			<td>
-<pre>POST /SOS_kysely/kyselyt/1/lisaaVastaus HTTP/1.1
+<pre>POST /SOS_kysely/kyselyt/kysymys/1/lisaaVastaus HTTP/1.1
 Host: proto433.haaga-helia.fi:8080
 Content-Type: application/json
 Cache-Control: no-cache
