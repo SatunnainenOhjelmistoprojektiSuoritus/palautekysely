@@ -41,16 +41,16 @@ public class KysymysDAO {
 	}
 	
 	//VAROKAA EPUN KOODIA
-	public void Pakollinen(int id) {
+	public void pakollinen(int id) {
 		
-		String sql = "UPDATE kysely SET kysely_deployed = true where kysely_id =" + id;
+		String sql = "UPDATE kysymys SET pakollinen = true where kysymys_id =" + id;
 		jdbcTemplate.execute(sql);
 		
 	}
 	
-	public void UnPakollinen(int id) {
+	public void vapaaehtoinen(int id) {
 		
-		String sql = "UPDATE kysely SET kysely_deployed = false where kysely_id =" + id;
+		String sql = "UPDATE kysymys SET pakollinen = false where kysymys_id =" + id;
 		jdbcTemplate.execute(sql);
 		
 	}

@@ -121,6 +121,27 @@ public class PalauteController {
 
 	}
 	
+	//EISAATANA TÄÄLLÄ KANS EPPUTEKI TUHOJA
+	
+	@RequestMapping(value = "/kyselyt/kysymys/{id}/pakollinen", produces = "application/json", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<?> kysymysPakollinen(@PathVariable int id) {
+
+		kydao.pakollinen(id);
+
+		return new ResponseEntity<Object>(HttpStatus.OK);
+
+	}
+	
+	
+	@RequestMapping(value = "/kyselyt/kysymys/{id}/vapaaehtoinen", produces = "application/json", method = RequestMethod.DELETE)
+	public @ResponseBody ResponseEntity<?> kysymysVapaaehtoinen(@PathVariable int id) {
+
+		kydao.vapaaehtoinen(id);
+
+		return new ResponseEntity<Object>(HttpStatus.OK);
+
+	}
+	
 	/*
 	 * 	===========================================================
 	 * 	Vastaus
