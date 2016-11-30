@@ -40,4 +40,20 @@ public class KysymysDAO {
 		jdbcTemplate.execute(sql);
 	}
 	
+	//VAROKAA EPUN KOODIA
+	public void Pakollinen(int id) {
+		
+		String sql = "UPDATE kysely SET kysely_deployed = true where kysely_id =" + id;
+		jdbcTemplate.execute(sql);
+		
+	}
+	
+	public void UnPakollinen(int id) {
+		
+		String sql = "UPDATE kysely SET kysely_deployed = false where kysely_id =" + id;
+		jdbcTemplate.execute(sql);
+		
+	}
+	
+	
 }
