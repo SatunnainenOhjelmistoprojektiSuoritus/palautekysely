@@ -4,6 +4,7 @@ public class Kysymys {
 	
 	private int kysymys_id, kysely_id;
 	private String kysymys, kysymys_tyyppi;
+	private boolean pakollinen;
 	
 	
 	public Kysymys() {
@@ -18,6 +19,16 @@ public class Kysymys {
 		this.kysely_id = kysely_id;
 		this.kysymys = kysymys;
 		this.kysymys_tyyppi = kysymys_tyyppi;
+	}
+	
+	public Kysymys(int kysymys_id, int kysely_id, String kysymys,
+			String kysymys_tyyppi, boolean pakollinen) {
+		super();
+		this.kysymys_id = kysymys_id;
+		this.kysely_id = kysely_id;
+		this.kysymys = kysymys;
+		this.kysymys_tyyppi = kysymys_tyyppi;
+		this.pakollinen = pakollinen;
 	}
 
 	public int getKysymys_id() {
@@ -52,15 +63,19 @@ public class Kysymys {
 		this.kysymys_tyyppi = kysymys_tyyppi;
 	}
 
+	public boolean isPakollinen() {
+		return pakollinen;
+	}
+
+	public void setPakollinen(boolean pakollinen) {
+		this.pakollinen = pakollinen;
+	}
+
 	@Override
 	public String toString() {
 		return "Kysymys [kysymys_id=" + kysymys_id + ", kysely_id=" + kysely_id
 				+ ", kysymys=" + kysymys + ", kysymys_tyyppi=" + kysymys_tyyppi
-				+ "]";
+				+ ", pakollinen=" + pakollinen + "]";
 	}
-	
-	
-	
-	
 
 }
