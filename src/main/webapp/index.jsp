@@ -89,7 +89,7 @@
 			<td><a href="kyselyt/1/lisaaVastaus/">/kyselyt/{id}/lisaaVastaus/</a> </td>
 			<td>Answer to questionnaires question with specific ID. </td>
 			<td>
-<pre>POST /kysely/kyselyt/1/lisaaVastaus HTTP/1.1
+<pre>POST /SOS_kysely/kyselyt/1/lisaaVastaus HTTP/1.1
 Host: proto433.haaga-helia.fi:8080
 Content-Type: application/json
 Cache-Control: no-cache
@@ -107,7 +107,7 @@ Cache-Control: no-cache
 			<td><a href="login">/login/</a> </td>
 			<td>Returns true/false on user login. Uses SHA512 encryption </td>
 			<td>
-<pre>POST /kysely/login HTTP/1.1
+<pre>POST /SOS_kysely/login HTTP/1.1
 Host: proto433.haaga-helia.fi:8080
 Content-Type: application/json
 Cache-Control: no-cache
@@ -130,7 +130,7 @@ Cache-Control: no-cache
 			<td><a href="kyselyt/1/lisaaKysymys">/kyselyt/{id}/lisaaKysymys</a> </td>
 			<td>Insert new question to questionnaire </td>
 			<td>
-<pre>POST /kysely//kyselyt/1/lisaaKysymys HTTP/1.1
+<pre>POST /SOS_kysely/kyselyt/1/lisaaKysymys HTTP/1.1
 Host: proto433.haaga-helia.fi
 Content-Type: application/json
 Cache-Control: no-cache
