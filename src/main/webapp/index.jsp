@@ -147,7 +147,7 @@ Cache-Control: no-cache
 			<td>POST </td>
 			<td><a href="kyselyt/lisaaKysely">/kyselyt/lisaaKysely</a> </td>
 			<td>Adds a new questionnaire </td>
-			<td><pre>POST /kysely/kyselyt/lisaaKysely HTTP/1.1
+			<td><pre>POST /SOS_kysely/kyselyt/lisaaKysely HTTP/1.1
 Host: proto433.haaga-helia.fi:8080/
 Content-Type: application/json
 Cache-Control: no-cache
