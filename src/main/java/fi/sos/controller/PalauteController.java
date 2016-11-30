@@ -129,7 +129,7 @@ public class PalauteController {
 	 * 	===========================================================
 	*/
 	
-	@RequestMapping(value = "/vastaukset/{id}", produces = "application/json", method = RequestMethod.GET)
+	@RequestMapping(value = "/kyselyt/vastaukset/{id}", produces = "application/json", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> haeVastaukset(@PathVariable int id) {
 		List<Vastaukset> vastaukset = vdao.haeVastaukset(id);
 
@@ -140,7 +140,7 @@ public class PalauteController {
 		return new ResponseEntity<Object>(vastaukset, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/vastaukset/", produces = "application/json", method = RequestMethod.GET)
+	@RequestMapping(value = "/kyselyt/vastaukset/", produces = "application/json", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> haeKaikkiVastaukset() {
 		List<Vastaukset> vastaukset = vastauksetdao.haeKaikkiVastaukset();
 

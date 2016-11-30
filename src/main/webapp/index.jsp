@@ -68,7 +68,7 @@
 		</tr>
 		<tr>
 			<td>GET </td>
-			<td><a href="vastaukset/">/vastaukset/</a>   </td>
+			<td><a href="kyselyt/vastaukset/">/kyselyt/vastaukset/</a>   </td>
 			<td>Fetch all responses to all questionnaires </td>
 			<td>Empty </td>
 			<td>HTTP 200 OK </td>
@@ -77,7 +77,7 @@
 		</tr>
 		<tr>
 			<td>GET </td>
-			<td><a href="vastaukset/1">/vastaukset/{id}</a>   </td>
+			<td><a href="kyselyt/vastaukset/1">/kyselyt/vastaukset/{id}</a>   </td>
 			<td>Fetch all responses to specific questionnaire </td>
 			<td>Questionnaires ID </td>
 			<td>HTTP 200 OK </td>
