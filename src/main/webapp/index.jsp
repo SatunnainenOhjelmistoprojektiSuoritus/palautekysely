@@ -67,6 +67,24 @@
 			
 		</tr>
 		<tr>
+			<td>POST </td>
+			<td><a href="kyselyt/kysymys/1/pakollinen">/kyselyt/kysymys/{id}/pakollinen</a>  </td>
+			<td>Deploy questionnaire </td>
+			<td>Questionnaires ID </td>
+			<td>HTTP 200 OK </td>
+			<td>HTTP 404, NOT FOUND </td>
+			
+		</tr>
+		<tr>
+			<td>DELETE </td>
+			<td><a href="kyselyt/kysymys/1/vapaaehtoinen">/kyselyt/kysymys/{id}/vapaaehtoinen</a>  </td>
+			<td>Undeploy questionnaire </td>
+			<td>Questionnaires ID </td>
+			<td>HTTP 200 OK </td>
+			<td>HTTP 404, NOT FOUND </td>
+			
+		</tr>
+		<tr>
 			<td>GET </td>
 			<td><a href="kyselyt/vastaukset/">/kyselyt/vastaukset/</a>   </td>
 			<td>Fetch all responses to all questionnaires </td>
