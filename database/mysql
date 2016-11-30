@@ -76,6 +76,9 @@ values
 	
 ALTER TABLE omistaja
 ADD omistaja_salt VARCHAR(255);
+
+ALTER TABLE kysymys
+ADD pakollinen boolean NOT NULL default 1;
 	
 
 // Hakee kaikki kyselyn kysymykset
