@@ -266,14 +266,20 @@ public class PalauteController {
 	
 		boolean authAccess = logindao.authAccess(omistaja.getLogin(), omistaja.getPassword());
 		
-		// Jos ei yhtään kyselyä löydy, palauta 404
+		// Jos palautuu false, palauta HTTPSTATUS UNAUTHORIZED
 		if (authAccess == false) {
 			return new ResponseEntity<Object>(authAccess, HttpStatus.UNAUTHORIZED);
 		}
 	
 		return new ResponseEntity<Object>(authAccess, HttpStatus.OK);
+		
 	}
 	
+	/* ======================================================
+	**Poistot**
+	Kysymyksen poisto
+	Kyselyn poisto
+	=========================================================*/
 	@RequestMapping(value = "/kyselyt/kysymys/{id}", produces = "application/json", method = RequestMethod.DELETE)
 	public @ResponseBody ResponseEntity<?> kysymysDelete(@PathVariable int id) {
 
@@ -281,7 +287,7 @@ public class PalauteController {
 
 		return new ResponseEntity<Object>(HttpStatus.OK);
 
-}
+	}
 	
 	@RequestMapping(value = "/kyselyt/{id}", produces = "application/json", method = RequestMethod.DELETE)
 	public @ResponseBody ResponseEntity<?> kyselyDelete(@PathVariable int id) {
@@ -290,6 +296,6 @@ public class PalauteController {
 
 		return new ResponseEntity<Object>(HttpStatus.OK);
 
-}
+	}
 	
 }
