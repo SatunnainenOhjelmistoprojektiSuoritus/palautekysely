@@ -272,6 +272,24 @@ public class PalauteController {
 		}
 	
 		return new ResponseEntity<Object>(authAccess, HttpStatus.OK);
-	}	
+	}
+	
+	@RequestMapping(value = "/kyselyt/kysymys/{id}", produces = "application/json", method = RequestMethod.DELETE)
+	public @ResponseBody ResponseEntity<?> kysymysDelete(@PathVariable int id) {
 
+		kydao.deleteKysymys(id);
+
+		return new ResponseEntity<Object>(HttpStatus.OK);
+
+}
+	
+	@RequestMapping(value = "/kyselyt/{id}", produces = "application/json", method = RequestMethod.DELETE)
+	public @ResponseBody ResponseEntity<?> kyselyDelete(@PathVariable int id) {
+
+		kdao.deleteKysely(id);
+
+		return new ResponseEntity<Object>(HttpStatus.OK);
+
+}
+	
 }

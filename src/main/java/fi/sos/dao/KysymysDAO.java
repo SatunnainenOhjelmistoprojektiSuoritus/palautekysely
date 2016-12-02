@@ -55,5 +55,11 @@ public class KysymysDAO {
 		
 	}
 	
+	public void deleteKysymys(int id){
+		
+		String sql = "UPDATE kysymys SET is_deleted = true where kysymys_id =" + id;
+		jdbcTemplate.execute(sql);
+	}
+	
 	
 }
