@@ -350,6 +350,54 @@ $.ajax(settings).done(function (response) {
 			<td>HTTP 405, METHOD NOT SUPPORTED<br>HTTP 412, PRECONDITION FAILED  </td>
 			
 		</tr>
+		<tr>
+			<td>DELETE </td>
+			<td><a href="/kyselyt/kysymys/1">/kyselyt/kysymys/{id}</a> </td>
+			<td>Deletes question via question ID</td>
+			<td><pre>var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "http://localhost:8080/kysely/kyselyt/kysymys/9",
+  "method": "DELETE",
+  "headers": {
+    "content-type": "application/json",
+    "cache-control": "no-cache",
+    "postman-token": "de168704-ce1c-0edc-901a-ecfc9ae58d8d"
+  }
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});</pre> </td>
+			<td>Question ID</td>
+			<td>HTTP 200 OK </td>
+			<td>None</td>
+			
+		</tr>
+				<tr>
+			<td>DELETE</td>
+			<td><a href="/kyselyt/1">/kyselyt/{id}</a> </td>
+			<td>Deletes questionnaire </td>
+			<td><pre>var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "http://proto433:8080/kysely/kyselyt/1",
+  "method": "DELETE",
+  "headers": {
+    "content-type": "application/json",
+    "cache-control": "no-cache",
+    "postman-token": "413d1d11-a143-728a-96da-de0696752a38"
+  }
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});</pre> </td>
+			<td>Questionnaire ID</td>
+			<td>HTTP 200 OK </td>
+			<td>None</td>
+			
+		</tr>		
 	</tbody>
 </table>
 </body>
