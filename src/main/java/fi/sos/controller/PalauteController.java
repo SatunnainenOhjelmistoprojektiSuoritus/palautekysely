@@ -178,18 +178,7 @@ public class PalauteController {
 	 * ===========================================================
 	 */
 	
-	@RequestMapping(value = "/login", produces = "application/json", method = RequestMethod.POST)
-	public @ResponseBody ResponseEntity<?> authAccess(@RequestBody Omistaja omistaja) {		
-
-		boolean authAccess = logindao.authAccess(omistaja.getLogin(), omistaja.getPassword());
-		
-		// Jos ei yhtään kyselyä löydy, palauta 404
-		if (authAccess == false) {
-			return new ResponseEntity<Object>(authAccess, HttpStatus.UNAUTHORIZED);
-		}
-
-		return new ResponseEntity<Object>(authAccess, HttpStatus.OK);
-	}
+	
 		
 	/*
 	 * ===========================================================
@@ -225,6 +214,25 @@ public class PalauteController {
 
 		return new ResponseEntity<Object>(HttpStatus.OK);
 
+	}
+
+	/*
+	 * ===========================================================
+	 *  Login
+	 * ===========================================================
+	 */
+	
+	@RequestMapping(value = "/login", produces = "application/json", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<?> authAccess(@RequestBody Omistaja omistaja) {		
+	
+		boolean authAccess = logindao.authAccess(omistaja.getLogin(), omistaja.getPassword());
+		
+		// Jos ei yhtään kyselyä löydy, palauta 404
+		if (authAccess == false) {
+			return new ResponseEntity<Object>(authAccess, HttpStatus.UNAUTHORIZED);
+		}
+	
+		return new ResponseEntity<Object>(authAccess, HttpStatus.OK);
 	}	
 
 }
