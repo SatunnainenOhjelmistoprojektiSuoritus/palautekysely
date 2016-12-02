@@ -27,7 +27,7 @@ public class KyselytDAO {
 	
 	public List<Kyselyt> haeKaikkiKyselyt() {
 
-		String sql = "select * from kysely"; // where deployed = true; kun ominaisuus toiminnassa
+		String sql = "select * from kysely where is_deleted = false"; // where deployed = true; kun ominaisuus toiminnassa
 		RowMapper<Kyselyt> mapper = new KyselytRowMapper();
 		List<Kyselyt> kyselyt = jdbcTemplate.query(sql, mapper);
 
@@ -36,7 +36,7 @@ public class KyselytDAO {
 	
 	public List<Kyselyt> haeKaikkiDeployedKyselyt() {
 
-		String sql = "select * from kysely where kysely_deployed = true";
+		String sql = "select * from kysely where kysely_deployed = true AND is_deleted = false";
 		RowMapper<Kyselyt> mapper = new KyselytRowMapper();
 		List<Kyselyt> kyselyt = jdbcTemplate.query(sql, mapper);
 
@@ -45,7 +45,7 @@ public class KyselytDAO {
 	
 	public List<Kyselyt> haeKaikkiUnDeployedKyselyt() {
 
-		String sql = "select * from kysely where kysely_deployed = false";
+		String sql = "select * from kysely where kysely_deployed = false AND is_deleted = false";
 		RowMapper<Kyselyt> mapper = new KyselytRowMapper();
 		List<Kyselyt> kyselyt = jdbcTemplate.query(sql, mapper);
 

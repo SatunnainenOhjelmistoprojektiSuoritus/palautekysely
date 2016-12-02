@@ -26,7 +26,7 @@ public class KyselyDAO {
 
 	public List<Kysely> haeKysely(int kysely_id) {
 
-		String sql = "select * from kysymys natural join kysely where kysely_id =" + kysely_id;
+		String sql = "select * from kysymys natural join kysely where is_deleted = false AND kysely_id =" + kysely_id;
 		RowMapper<Kysely> mapper = new KyselyRowMapper();
 		List<Kysely> kyselyt = jdbcTemplate.query(sql, mapper);
 
@@ -36,6 +36,12 @@ public class KyselyDAO {
 	public void lisaaKysely(String kysely_nimi, String kuvaus, int omistaja_id) {
 
 		String sql = "INSERT INTO kysely (kysely_nimi, kysely_kuvaus, omistaja_id) VALUES ('" + kysely_nimi + "', '" + kuvaus + "', '" + omistaja_id + "');";
+		jdbcTemplate.execute(sql);
+	}
+	
+	public void deleteKysely(int id){
+		
+		String sql = "UPDATE kysymys SET is_deleted = true WHERE kysymys_id = "+ id;
 		jdbcTemplate.execute(sql);
 	}
 	
