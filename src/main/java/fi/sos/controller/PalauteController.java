@@ -60,7 +60,8 @@ public class PalauteController {
 	 * Hae kaikki undeployed kyselyt
 	 * ===========================================================
 	 */
-
+	
+	
 	@RequestMapping(value = "/kyselyt/{id}", produces = "application/json", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> haeKyselyJSON(@PathVariable int id) {
 
@@ -206,13 +207,15 @@ public class PalauteController {
 
 		Validaattori v = new Validaattori();		
 		
-		boolean checkForType = v.checkForAcceptedQuestionTypes(kysymys.getKysymys_tyyppi());
+		// Frontilla ei tarvetta
+		//boolean checkForType = v.checkForAcceptedQuestionTypes(kysymys.getKysymys_tyyppi());
 		boolean checkForNullQuestion = v.checkForEmpty(kysymys.getKysymys());
 		boolean checkForNullType = v.checkForEmpty(kysymys.getKysymys_tyyppi());
-		
+		/*
 		if (!checkForType){
 			return new ResponseEntity<String>(ERROR_WRONG_TYPE, HttpStatus.PRECONDITION_FAILED);
-		}		
+		}	
+		*/	
 		
 		if (!checkForNullQuestion){
 			return new ResponseEntity<String>(ERROR_NULL, HttpStatus.PRECONDITION_FAILED);
