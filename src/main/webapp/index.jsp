@@ -117,7 +117,7 @@ Cache-Control: no-cache
 }
 </pre> </td>
 			<td>HTTP 200 OK </td>
-			<td>HTTP 405, METHOD NOT SUPPORTED </td>
+			<td>HTTP 405, METHOD NOT SUPPORTED<br>HTTP 412, PRECONDITION FAILED </td>
 			
 		</tr>
 		<tr>
@@ -158,7 +158,7 @@ Cache-Control: no-cache
 "kysymys_tyyppi" : "string"
 }</pre> </td>
 			<td>HTTP 200 OK </td>
-			<td>HTTP 405, METHOD NOT SUPPORTED </td>
+			<td>HTTP 405, METHOD NOT SUPPORTED<br>HTTP 412, PRECONDITION FAILED  </td>
 			
 		</tr>
 		<tr>
@@ -176,7 +176,7 @@ Cache-Control: no-cache
 "omistaja_id" : 1
 }</pre> </td>
 			<td>HTTP 200 OK </td>
-			<td>HTTP 405, METHOD NOT SUPPORTED </td>
+			<td>HTTP 405, METHOD NOT SUPPORTED<br>HTTP 412, PRECONDITION FAILED  </td>
 			
 		</tr>
 	</tbody>
