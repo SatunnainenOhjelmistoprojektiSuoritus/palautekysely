@@ -69,8 +69,8 @@
 		<tr>
 			<td>POST </td>
 			<td><a href="kyselyt/kysymys/1/pakollinen">/kyselyt/kysymys/{id}/pakollinen</a>  </td>
-			<td>Deploy questionnaire </td>
-			<td>Questionnaires ID </td>
+			<td>Set question to mandatory, default value is mandatory</td>
+			<td>Question ID </td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 404, NOT FOUND </td>
 			
@@ -78,8 +78,8 @@
 		<tr>
 			<td>DELETE </td>
 			<td><a href="kyselyt/kysymys/1/vapaaehtoinen">/kyselyt/kysymys/{id}/vapaaehtoinen</a>  </td>
-			<td>Undeploy questionnaire </td>
-			<td>Questionnaires ID </td>
+			<td>Set question to non-mandatory </td>
+			<td>Question ID </td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 404, NOT FOUND </td>
 			

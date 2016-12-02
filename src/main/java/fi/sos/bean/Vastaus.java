@@ -3,7 +3,9 @@ package fi.sos.bean;
 public class Vastaus {
 	
 	private int vastaus_id, kysymys_id;
+		
 	private String vastaus;
+	
 	public Vastaus() {
 		super();
 		// TODO Auto-generated constructor stub

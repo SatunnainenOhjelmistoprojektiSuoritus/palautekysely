@@ -25,9 +25,14 @@ import fi.sos.dao.KysymysDAO;
 import fi.sos.dao.LoginDAO;
 import fi.sos.dao.VastauksetDAO;
 import fi.sos.dao.VastausDAO;
+import fi.sos.validation.Validaattori;
 
 @Controller
 public class PalauteController {
+	
+	private final String ERROR_NULL = "Validation failed, Input can't be null";
+	private final String ERROR_WRONG_TYPE = "Validation failed, Question type not accepted";
+	
 	@Inject
 	KyselyDAO kdao;
 
@@ -203,15 +208,39 @@ public class PalauteController {
 	@RequestMapping(value = "/kyselyt/kysymys/{id}/lisaaVastaus", produces = "application/json", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> kyselyLisaaVastaus(@PathVariable int id, @RequestBody Vastaus vastaus) {
 
+		Validaattori v = new Validaattori();
+		
+		boolean checkForNull = v.checkForEmpty(vastaus.getVastaus());
+		
+		if (!checkForNull){
+			return new ResponseEntity<String>(ERROR_NULL, HttpStatus.PRECONDITION_FAILED);
+		}		
+		
 		vdao.lisaaVastaus(id, vastaus.getVastaus());
-
-		return new ResponseEntity<Object>(HttpStatus.OK);
-
+		return new ResponseEntity<Object>(HttpStatus.OK);	
 	}
 	
 	@RequestMapping(value = "/kyselyt/{id}/lisaaKysymys", produces = "application/json", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> kyselyLisaaKysymys(@PathVariable int id, @RequestBody Kysymys kysymys) {
 
+		Validaattori v = new Validaattori();		
+		
+		boolean checkForType = v.checkForAcceptedQuestionTypes(kysymys.getKysymys_tyyppi());
+		boolean checkForNullQuestion = v.checkForEmpty(kysymys.getKysymys());
+		boolean checkForNullType = v.checkForEmpty(kysymys.getKysymys_tyyppi());
+		
+		if (!checkForType){
+			return new ResponseEntity<String>(ERROR_WRONG_TYPE, HttpStatus.PRECONDITION_FAILED);
+		}		
+		
+		if (!checkForNullQuestion){
+			return new ResponseEntity<String>(ERROR_NULL, HttpStatus.PRECONDITION_FAILED);
+		}
+		
+		if (!checkForNullType){
+			return new ResponseEntity<String>(ERROR_NULL, HttpStatus.PRECONDITION_FAILED);
+		}
+		
 		kydao.lisaaKysymys(id, kysymys.getKysymys(), kysymys.getKysymys_tyyppi());
 
 		return new ResponseEntity<Object>(HttpStatus.OK);
@@ -220,6 +249,21 @@ public class PalauteController {
 	
 	@RequestMapping(value = "/kyselyt/lisaaKysely", produces = "application/json", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> kyselyLisaaKysely(@RequestBody Kysely kysely) {
+		
+		
+		Validaattori v = new Validaattori();
+		
+		boolean checkForNullDescription = v.checkForEmpty(kysely.getKuvaus());
+		boolean checkForNullName = v.checkForEmpty(kysely.getKysely_nimi());
+		
+		if (!checkForNullDescription){
+			return new ResponseEntity<String>(ERROR_NULL, HttpStatus.PRECONDITION_FAILED);
+		}
+		
+		if (!checkForNullName){
+			return new ResponseEntity<String>(ERROR_NULL, HttpStatus.PRECONDITION_FAILED);
+		}
+		
 		
 		kdao.lisaaKysely(kysely.getKysely_nimi(), kysely.getKuvaus(), kysely.getOmistaja_id());
 
