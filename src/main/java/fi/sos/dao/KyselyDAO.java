@@ -41,7 +41,7 @@ public class KyselyDAO {
 	
 	public void deleteKysely(int id){
 		
-		String sql = "UPDATE kysymys SET is_deleted = true WHERE kysymys_id = "+ id;
+		String sql = "UPDATE kysely SET is_deleted = true WHERE kysely_id = "+ id;
 		jdbcTemplate.execute(sql);
 	}
 	
