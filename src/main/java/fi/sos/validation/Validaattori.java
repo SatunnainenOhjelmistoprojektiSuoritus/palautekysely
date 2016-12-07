@@ -34,6 +34,7 @@ public class Validaattori {
 	public boolean checkForDataType(String type, String data){
 		
 		String numero = "int";
+		data = data.trim();
 		
 		try {
 			
@@ -42,6 +43,9 @@ public class Validaattori {
 				return true;
 			}
 			
+			if (data.isEmpty()){
+				return false;
+			}
 			
 		} catch (Exception e) {
 			return false;

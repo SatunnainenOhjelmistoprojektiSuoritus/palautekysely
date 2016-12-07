@@ -31,9 +31,7 @@ import fi.sos.validation.Validaattori;
 public class PalauteController {
 	
 	private final String ERROR_NULL = "Validation failed, Input can't be null";
-	
-	//NOT IN USE
-	//private final String ERROR_WRONG_TYPE = "Validation failed, Question type not accepted";
+	private final String ERROR_WRONG_TYPE = "Validation failed, type not accepted";
 	
 	@Inject
 	KyselyDAO kdao;
@@ -240,6 +238,8 @@ public class PalauteController {
 		
 		boolean checkForNullDescription = v.checkForEmpty(kysely.getKuvaus());
 		boolean checkForNullName = v.checkForEmpty(kysely.getKysely_nimi());
+		boolean checkForID = v.checkForDataType("int", ""+kysely.getOmistaja_id());
+		
 		
 		if (!checkForNullDescription){
 			return new ResponseEntity<String>(ERROR_NULL, HttpStatus.PRECONDITION_FAILED);
@@ -247,7 +247,11 @@ public class PalauteController {
 		
 		if (!checkForNullName){
 			return new ResponseEntity<String>(ERROR_NULL, HttpStatus.PRECONDITION_FAILED);
-		}		
+		}
+				
+		if (!checkForID){
+			return new ResponseEntity<String>(ERROR_WRONG_TYPE, HttpStatus.PRECONDITION_FAILED);
+		}
 		
 		kdao.lisaaKysely(kysely.getKysely_nimi(), kysely.getKuvaus(), kysely.getOmistaja_id());
 
