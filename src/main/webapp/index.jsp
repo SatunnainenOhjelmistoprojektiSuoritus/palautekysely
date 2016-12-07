@@ -345,7 +345,7 @@ $.ajax(settings).done(function (response) {
 $.ajax(settings).done(function (response) {
   console.log(response);
 });</pre></td>
-			<td>{"kysymys" : "juutalaisia, onko heitä?","kysymys_tyyppi" : "string"}</td>
+			<td>{"kysymys" : "juutalaisia, onko heitä?","kysymys_tyyppi" : "string", "kysymys_info" : "vaihtoehto1/vaihtoehto2/vaihtoehto3"}</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 405, METHOD NOT SUPPORTED<br>HTTP 412, PRECONDITION FAILED  </td>
 			
