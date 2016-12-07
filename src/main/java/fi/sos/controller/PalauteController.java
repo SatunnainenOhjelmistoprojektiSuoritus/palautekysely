@@ -131,8 +131,6 @@ public class PalauteController {
 
 	}
 	
-	//EISAATANA TÄÄLLÄ KANS EPPUTEKI TUHOJA
-	
 	@RequestMapping(value = "/kyselyt/kysymys/{id}/pakollinen", produces = "application/json", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> kysymysPakollinen(@PathVariable int id) {
 
@@ -140,8 +138,7 @@ public class PalauteController {
 
 		return new ResponseEntity<Object>(HttpStatus.OK);
 
-	}
-	
+	}	
 	
 	@RequestMapping(value = "/kyselyt/kysymys/{id}/vapaaehtoinen", produces = "application/json", method = RequestMethod.DELETE)
 	public @ResponseBody ResponseEntity<?> kysymysVapaaehtoinen(@PathVariable int id) {
@@ -237,8 +234,7 @@ public class PalauteController {
 	}
 	
 	@RequestMapping(value = "/kyselyt/lisaaKysely", produces = "application/json", method = RequestMethod.POST)
-	public @ResponseBody ResponseEntity<?> kyselyLisaaKysely(@RequestBody Kysely kysely) {
-		
+	public @ResponseBody ResponseEntity<?> kyselyLisaaKysely(@RequestBody Kysely kysely) {		
 		
 		Validaattori v = new Validaattori();
 		
@@ -251,8 +247,7 @@ public class PalauteController {
 		
 		if (!checkForNullName){
 			return new ResponseEntity<String>(ERROR_NULL, HttpStatus.PRECONDITION_FAILED);
-		}
-		
+		}		
 		
 		kdao.lisaaKysely(kysely.getKysely_nimi(), kysely.getKuvaus(), kysely.getOmistaja_id());
 
