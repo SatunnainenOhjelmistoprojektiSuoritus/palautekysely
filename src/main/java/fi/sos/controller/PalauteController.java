@@ -31,7 +31,9 @@ import fi.sos.validation.Validaattori;
 public class PalauteController {
 	
 	private final String ERROR_NULL = "Validation failed, Input can't be null";
-	private final String ERROR_WRONG_TYPE = "Validation failed, Question type not accepted";
+	
+	//NOT IN USE
+	//private final String ERROR_WRONG_TYPE = "Validation failed, Question type not accepted";
 	
 	@Inject
 	KyselyDAO kdao;
@@ -58,6 +60,8 @@ public class PalauteController {
 	 * Hae Kaikki kyselyt
 	 * Hae kaikki deployed kyselyt
 	 * Hae kaikki undeployed kyselyt
+	 * Laita kysymys pakolliseksi
+	 * Laita kysymys vapaaehtoiseksi
 	 * ===========================================================
 	 */
 	
@@ -160,7 +164,7 @@ public class PalauteController {
 	public @ResponseBody ResponseEntity<?> haeVastaukset(@PathVariable int id) {
 		List<Vastaukset> vastaukset = vdao.haeVastaukset(id);
 
-		// Jos ei löydy yhtään vastausta kyselyä, palauta 404
+		// Jos ei löydy yhtään vastausta, palauta 404
 		if (vastaukset.size() == 0) {
 			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 		}
@@ -171,7 +175,7 @@ public class PalauteController {
 	public @ResponseBody ResponseEntity<?> haeKaikkiVastaukset() {
 		List<Vastaukset> vastaukset = vastauksetdao.haeKaikkiVastaukset();
 
-		// Jos ei löydy yhtään vastausta kyselyä, palauta 404
+		// Jos ei löydy yhtään vastausta kyselyyn, palauta 404
 		if (vastaukset.size() == 0) {
 			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 		}
@@ -207,11 +211,12 @@ public class PalauteController {
 
 		Validaattori v = new Validaattori();		
 		
-		// Frontilla ei tarvetta
-		//boolean checkForType = v.checkForAcceptedQuestionTypes(kysymys.getKysymys_tyyppi());
 		boolean checkForNullQuestion = v.checkForEmpty(kysymys.getKysymys());
 		boolean checkForNullType = v.checkForEmpty(kysymys.getKysymys_tyyppi());
 		/*
+		 Frontilla ei tarvetta
+		 boolean checkForType = v.checkForAcceptedQuestionTypes(kysymys.getKysymys_tyyppi());
+		 
 		if (!checkForType){
 			return new ResponseEntity<String>(ERROR_WRONG_TYPE, HttpStatus.PRECONDITION_FAILED);
 		}	
