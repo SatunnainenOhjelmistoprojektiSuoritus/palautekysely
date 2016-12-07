@@ -27,6 +27,7 @@ public class KyselyRowMapper implements RowMapper<Kysely> {
 		ky.setKysymys_tyyppi(rs.getString("kysymys_tyyppi"));
 		ky.setKysymys_id(rs.getInt("kysymys_id"));
 		ky.setPakollinen(rs.getBoolean("pakollinen"));
+		ky.setKysymys_info(rs.getString("kysymys_info"));
 		k.setKysymys(ky);
 				
 		return k;

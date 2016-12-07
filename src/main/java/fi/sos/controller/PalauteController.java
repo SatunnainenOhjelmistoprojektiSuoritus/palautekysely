@@ -240,7 +240,7 @@ public class PalauteController {
 			return new ResponseEntity<String>(ERROR_NULL, HttpStatus.PRECONDITION_FAILED);
 		}
 		
-		kydao.lisaaKysymys(id, kysymys.getKysymys(), kysymys.getKysymys_tyyppi());
+		kydao.lisaaKysymys(id, kysymys.getKysymys(), kysymys.getKysymys_tyyppi(), kysymys.getKysymys_info());
 
 		return new ResponseEntity<Object>(HttpStatus.OK);
 
