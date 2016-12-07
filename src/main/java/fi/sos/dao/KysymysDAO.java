@@ -33,9 +33,9 @@ public class KysymysDAO {
 		return kyselyt;
 	}
 	
-	public void lisaaKysymys(int kysely_id, String kysymys, String kysymys_tyyppi) {
+	public void lisaaKysymys(int kysely_id, String kysymys, String kysymys_tyyppi, String kysymys_info) {
 
-		String sql = "INSERT INTO kysymys (kysely_id, Kysymys, Kysymys_tyyppi) VALUES ('" + kysely_id + "', '" + kysymys + "', '" + kysymys_tyyppi + "');";
+		String sql = "INSERT INTO kysymys (kysely_id, Kysymys, Kysymys_tyyppi, kysymys_info) VALUES ('" + kysely_id + "', '" + kysymys + "', '" + kysymys_tyyppi + "', '" + kysymys_info + "'" +");";
 		jdbcTemplate.execute(sql);
 	}
 	
