@@ -98,6 +98,10 @@ select * from vastaus natural join kysymys where kysely_id = 1;
 // Asettaa kysymyksen poistetuksi
 
 ALTER TABLE kysymys ADD is_deleted boolean NOT NULL default 0;
+
+// Lisäys kysymys-tauluun
+
+ALTER TABLE kysymys ADD kysymys_info VARCHAR(255);
 	
 	
 	
