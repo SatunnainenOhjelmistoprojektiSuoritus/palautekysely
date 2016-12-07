@@ -15,6 +15,8 @@ CREATE TABLE kysymys (
 	kysely_id INT NOT NULL,
 	kysymys VARCHAR(255) NOT NULL,
 	kysymys_tyyppi VARCHAR(255),
+	pakollinen boolean NOT NULL default 1,
+	is_deleted BOOLEAN NOT NULL default 0,
 	PRIMARY KEY(kysymys_id),
 	FOREIGN KEY (kysely_id) REFERENCES kysely(kysely_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -24,6 +26,7 @@ CREATE TABLE kysely (
 	kysely_nimi VARCHAR(255),
 	kysely_deployed boolean NOT NULL default 0,
 	kysely_kuvaus VARCHAR(255),
+	is_deleted BOOLEAN NOT NULL default 0,
 	omistaja_id INT NOT NULL,
 	PRIMARY KEY(kysely_id),
 	FOREIGN KEY (omistaja_id) REFERENCES omistaja(omistaja_id)
