@@ -17,7 +17,7 @@ public class KyselyRowMapper implements RowMapper<Kysely> {
 		k.setKysely_id(rs.getInt("kysely_id"));
 		k.setKysely_nimi(rs.getString("kysely_nimi"));
 		k.setOmistaja_id(rs.getInt("omistaja_id"));
-		
+		k.setSurveyID(rs.getString("surveyID"));
 		k.setDeployed(rs.getBoolean("kysely_deployed"));
 		
 		//Kysymys olio

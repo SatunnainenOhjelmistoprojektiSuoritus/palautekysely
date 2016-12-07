@@ -1,6 +1,7 @@
 package fi.sos.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.inject.Inject;
 
@@ -64,7 +65,7 @@ public class PalauteController {
 	 */
 	
 	
-	@RequestMapping(value = "/kyselyt/{id}", produces = "application/json", method = RequestMethod.GET)
+	@RequestMapping(value = "/kyselyt/old/{id}", produces = "application/json", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> haeKyselyJSON(@PathVariable int id) {
 
 		List<Kysely> kyselyt = kdao.haeKysely(id);
@@ -75,6 +76,20 @@ public class PalauteController {
 
 		return new ResponseEntity<Object>(kyselyt, HttpStatus.OK);
 	}
+	
+	
+	@RequestMapping(value = "/kyselyt/{surveyID}", produces = "application/json", method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<?> haeKyselyJSON(@PathVariable String surveyID) {
+
+		List<Kysely> kyselyt = kdao.haeKyselySurveyID(surveyID);
+		// Jos kyselyä ei löydy, palauta 404
+		if (kyselyt.size() == 0) {
+			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+		}
+
+		return new ResponseEntity<Object>(kyselyt, HttpStatus.OK);
+	}
+	
 
 	@RequestMapping(value = "/kyselyt", produces = "application/json", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> haeKaikkiKyselytJSON() {
@@ -240,6 +255,10 @@ public class PalauteController {
 		boolean checkForNullName = v.checkForEmpty(kysely.getKysely_nimi());
 		boolean checkForID = v.checkForDataType("int", ""+kysely.getOmistaja_id());
 		
+		String random = UUID.randomUUID().toString();
+		
+		random = random.substring(0, 6);
+		System.out.println(random + "***************************************--->*");
 		
 		if (!checkForNullDescription){
 			return new ResponseEntity<String>(ERROR_NULL, HttpStatus.PRECONDITION_FAILED);
@@ -253,9 +272,9 @@ public class PalauteController {
 			return new ResponseEntity<String>(ERROR_WRONG_TYPE, HttpStatus.PRECONDITION_FAILED);
 		}
 		
-		kdao.lisaaKysely(kysely.getKysely_nimi(), kysely.getKuvaus(), kysely.getOmistaja_id());
+		kdao.lisaaKysely(kysely.getKysely_nimi(), kysely.getKuvaus(), kysely.getOmistaja_id(), random);
 
-		return new ResponseEntity<Object>(HttpStatus.OK);
+		return new ResponseEntity<String>(random, HttpStatus.OK);
 
 	}
 

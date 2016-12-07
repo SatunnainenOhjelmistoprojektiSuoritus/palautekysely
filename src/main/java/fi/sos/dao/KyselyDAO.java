@@ -33,9 +33,9 @@ public class KyselyDAO {
 		return kyselyt;
 	}
 	
-	public void lisaaKysely(String kysely_nimi, String kuvaus, int omistaja_id) {
+	public void lisaaKysely(String kysely_nimi, String kuvaus, int omistaja_id, String random) {
 
-		String sql = "INSERT INTO kysely (kysely_nimi, kysely_kuvaus, omistaja_id) VALUES ('" + kysely_nimi + "', '" + kuvaus + "', '" + omistaja_id + "');";
+		String sql = "INSERT INTO kysely (kysely_nimi, kysely_kuvaus, omistaja_id, surveyID) VALUES ('" + kysely_nimi + "', '" + kuvaus + "', '" + omistaja_id + "', '" + random + "');";
 		jdbcTemplate.execute(sql);
 	}
 	
@@ -43,6 +43,16 @@ public class KyselyDAO {
 		
 		String sql = "UPDATE kysely SET is_deleted = true WHERE kysely_id = "+ id;
 		jdbcTemplate.execute(sql);
+	}
+
+	public List<Kysely> haeKyselySurveyID(String surveyID) {
+		
+		String sql = "select * from kysymys natural join kysely where is_deleted = false AND surveyID = '" + surveyID +"'";
+		RowMapper<Kysely> mapper = new KyselyRowMapper();
+		List<Kysely> kyselyt = jdbcTemplate.query(sql, mapper);
+
+		return kyselyt;
+		
 	}
 	
 	
