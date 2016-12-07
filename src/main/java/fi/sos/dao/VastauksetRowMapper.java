@@ -18,8 +18,7 @@ public class VastauksetRowMapper implements RowMapper<Vastaukset> {
 		v.setVastaus(rs.getString("vastaus"));
 		v.setKysely_id(rs.getInt("kysely_id"));
 		v.setKysymys(rs.getString("kysymys"));
-		v.setKysymys_tyyppi(rs.getString("kysymys_tyyppi"));
-		
+		v.setKysymys_tyyppi(rs.getString("kysymys_tyyppi"));		
 		
 		return v;
 	}

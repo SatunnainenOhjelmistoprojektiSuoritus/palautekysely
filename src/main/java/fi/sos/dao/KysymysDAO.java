@@ -24,7 +24,6 @@ public class KysymysDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-
 	public List<Kysymys> haeKysymys(int kysymys_id) {
 
 		String sql = "";
@@ -40,7 +39,6 @@ public class KysymysDAO {
 		jdbcTemplate.execute(sql);
 	}
 	
-	//VAROKAA EPUN KOODIA
 	public void pakollinen(int id) {
 		
 		String sql = "UPDATE kysymys SET pakollinen = true where kysymys_id =" + id;

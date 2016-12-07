@@ -24,7 +24,6 @@ public class VastauksetDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-
 	public List<Vastaukset> haeKaikkiVastaukset() {
 
 		String sql = "select * from vastaus natural join kysymys";

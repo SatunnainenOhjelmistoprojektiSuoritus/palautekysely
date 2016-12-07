@@ -18,7 +18,6 @@ public class KysymysRowMapper implements RowMapper<Kysymys> {
 		k.setKysymys(rs.getString("kysymys"));
 		k.setKysymys_tyyppi("kysymys_tyyppi");
 		
-		
 		return k;
 	}
 

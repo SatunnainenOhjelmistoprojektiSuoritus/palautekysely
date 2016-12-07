@@ -36,24 +36,18 @@ public class LoginDAO {
 			omistaja.setPassword(rs.getString("omistaja_password"));
 			return omistaja;
 		}
-		
-		
+				
 	}
 
 	public boolean authAccess(String login, String password) {
 		
-		
-		
 		boolean checkLogin = false;
-		
-		System.out.println("*****************" + login + "\n*********************" + password);
 		
 		try{
 		String sql = "select omistaja_login, omistaja_password from omistaja where omistaja_login = '" + login + "' AND omistaja_password ='" + password + "';";
 		
 		Omistaja omistaja = (Omistaja)getJdbcTemplate().queryForObject(sql, new LoginRowMapper());
-		
-		
+				
 		String userKannasta = omistaja.getLogin();
 		String passwordKannasta = omistaja.getPassword();
 		

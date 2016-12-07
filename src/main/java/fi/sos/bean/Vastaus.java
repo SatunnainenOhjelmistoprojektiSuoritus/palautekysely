@@ -8,7 +8,6 @@ public class Vastaus {
 	
 	public Vastaus() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Vastaus(int vastaus_id, int kysymys_id, String vastaus) {
 		super();

@@ -23,7 +23,6 @@ public class KyselytDAO {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-
 	
 	public List<Kyselyt> haeKaikkiKyselyt() {
 
@@ -64,7 +63,6 @@ public class KyselytDAO {
 		String sql = "UPDATE kysely SET kysely_deployed = true where kysely_id =" + id;
 		jdbcTemplate.execute(sql);
 		
-	}
-	
+	}	
 	
 }

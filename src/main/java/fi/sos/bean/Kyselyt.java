@@ -10,7 +10,6 @@ public class Kyselyt {
 
 	public Kyselyt() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Kyselyt(int kysely_id, String kysely_nimi, boolean deployed,
