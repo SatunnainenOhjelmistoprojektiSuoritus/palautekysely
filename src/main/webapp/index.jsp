@@ -87,12 +87,12 @@ $.ajax(settings).done(function (response) {
 		</tr>		
 		<tr>
 			<td>GET </td>
-			<td><a href="kyselyt/1">/kyselyt/{id} </a></td>
-			<td>Show data from specific questionnaire </td>
+			<td><a href="kyselyt/old/1">/kyselyt/old/{id} </a></td>
+			<td>Show all questions + questionaire related data from specific questionnaire </td>
 			<td><pre>var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://proto433:8080/SOS_kysely/kyselyt/1",
+  "url": "http://proto433:8080/SOS_kysely/kyselyt/old/1",
   "method": "GET",
   "headers": {
     "content-type": "application/json",
@@ -105,6 +105,30 @@ $.ajax(settings).done(function (response) {
   console.log(response);
 });</pre></td>
 			<td>Questionaires ID</td>
+			<td>HTTP 200 OK </td>
+			<td>HTTP 404, NOT FOUND</td>
+			
+		</tr>
+				<tr>
+			<td>GET </td>
+			<td><a href="kyselyt/nkkxkf">/kyselyt/{surveyID} </a></td>
+			<td>Show all questions + questionaire related data from specific questionnaire </td>
+			<td><pre>var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "http://proto433:8080/SOS_kysely/kyselyt/nkkxkf",
+  "method": "GET",
+  "headers": {
+    "content-type": "application/json",
+    "cache-control": "no-cache",
+    "postman-token": "9a0745c2-8ae3-a380-222f-32a76e1e7961"
+  }
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});</pre></td>
+			<td>Survey ID</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 404, NOT FOUND</td>
 			

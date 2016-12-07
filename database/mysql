@@ -27,7 +27,7 @@ CREATE TABLE kysely (
 	kysely_deployed boolean NOT NULL default 0,
 	kysely_kuvaus VARCHAR(255),
 	is_deleted BOOLEAN NOT NULL default 0,
-	surveyID CHAR(6) NOT NULL,
+	surveyID CHAR(6) NOT NULL UNIQUE,
 	omistaja_id INT NOT NULL,
 	PRIMARY KEY(kysely_id),
 	FOREIGN KEY (omistaja_id) REFERENCES omistaja(omistaja_id)
