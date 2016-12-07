@@ -7,19 +7,21 @@ public class Kyselyt {
 	private boolean deployed;
 	private String kysely_kuvaus;
 	private int omistaja_id;
+	private String surveyID;
 
 	public Kyselyt() {
 		super();
 	}
 
 	public Kyselyt(int kysely_id, String kysely_nimi, boolean deployed,
-			String kysely_kuvaus, int omistaja_id) {
+			String kysely_kuvaus, int omistaja_id, String surveyID) {
 		super();
 		this.kysely_id = kysely_id;
 		this.kysely_nimi = kysely_nimi;
 		this.deployed = deployed;
 		this.kysely_kuvaus = kysely_kuvaus;
 		this.omistaja_id = omistaja_id;
+		this.surveyID = surveyID;
 	}
 
 	public int getKysely_id() {
@@ -62,11 +64,20 @@ public class Kyselyt {
 		this.omistaja_id = omistaja_id;
 	}
 
+	public String getSurveyID() {
+		return surveyID;
+	}
+
+	public void setSurveyID(String surveyID) {
+		this.surveyID = surveyID;
+	}
+
 	@Override
 	public String toString() {
 		return "Kyselyt [kysely_id=" + kysely_id + ", kysely_nimi="
 				+ kysely_nimi + ", deployed=" + deployed + ", kysely_kuvaus="
-				+ kysely_kuvaus + ", omistaja_id=" + omistaja_id + "]";
+				+ kysely_kuvaus + ", omistaja_id=" + omistaja_id
+				+ ", surveyID=" + surveyID + "]";
 	}
 
 }

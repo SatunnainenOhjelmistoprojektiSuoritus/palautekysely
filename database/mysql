@@ -27,6 +27,7 @@ CREATE TABLE kysely (
 	kysely_deployed boolean NOT NULL default 0,
 	kysely_kuvaus VARCHAR(255),
 	is_deleted BOOLEAN NOT NULL default 0,
+	surveyID CHAR(6) NOT NULL,
 	omistaja_id INT NOT NULL,
 	PRIMARY KEY(kysely_id),
 	FOREIGN KEY (omistaja_id) REFERENCES omistaja(omistaja_id)
@@ -84,7 +85,7 @@ ALTER TABLE kysymys
 ADD pakollinen boolean NOT NULL default 1;
 
 ALTER TABLE kysely
-ADD is_deleted BOOLEAN NOT NULL default 0;
+ADD surveyID CHAR(6) UNIQUE NOT NULL;
 	
 
 // Hakee kaikki kyselyn kysymykset
