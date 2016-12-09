@@ -304,7 +304,7 @@ $.ajax(settings).done(function (response) {
 		<tr>
 			<td>POST </td>
 			<td><a href="login">/login/</a> </td>
-			<td>Returns true/false on user login. Uses SHA512 encryption </td>
+			<td>Returns user id + true/negative number + false on user login. Uses SHA512 encryption </td>
 			<td><pre>var settings = {
   "async": true,
   "crossDomain": true,
