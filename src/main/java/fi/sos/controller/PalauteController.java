@@ -1,6 +1,7 @@
 package fi.sos.controller;
 
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -286,16 +287,21 @@ public class PalauteController {
 	
 	@RequestMapping(value = "/login", produces = "application/json", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> authAccess(@RequestBody Omistaja omistaja) {		
-	
-		boolean authAccess = logindao.authAccess(omistaja.getLogin(), omistaja.getPassword());
-		
-		// Jos palautuu false, palauta HTTPSTATUS UNAUTHORIZED
-		if (authAccess == false) {
-			return new ResponseEntity<Object>(authAccess, HttpStatus.UNAUTHORIZED);
+
+		Omistaja o = logindao.authAccess(omistaja.getLogin(), omistaja.getPassword());		
+
+		// Jos jotain palautuu, n‰ytet‰‰n omistajan id + 'true'
+		if (o != null){			
+			
+			return new ResponseEntity<String>(o.getOmistaja_id() + " True", HttpStatus.OK);
 		}
-	
-		return new ResponseEntity<Object>(authAccess, HttpStatus.OK);
 		
+		// Random negatiivinen numero
+		Random random = new Random();
+		int randomNumber = (random.nextInt(1000)-1001);
+		
+		//Defaulttina ei p‰‰sy‰, tulostuu false + random negatiivinen numero
+		return new ResponseEntity<String>(randomNumber + " False", HttpStatus.UNAUTHORIZED);
 	}
 	
 	/* ======================================================

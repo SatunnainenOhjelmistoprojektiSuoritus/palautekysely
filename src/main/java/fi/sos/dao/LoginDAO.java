@@ -32,6 +32,7 @@ public class LoginDAO {
 
 		public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Omistaja omistaja = new Omistaja();
+			omistaja.setOmistaja_id(rs.getInt("omistaja_id"));
 			omistaja.setLogin(rs.getString("omistaja_login"));
 			omistaja.setPassword(rs.getString("omistaja_password"));
 			return omistaja;
@@ -39,29 +40,28 @@ public class LoginDAO {
 				
 	}
 
-	public boolean authAccess(String login, String password) {
-		
-		boolean checkLogin = false;
+	public Omistaja authAccess(String login, String password) {
 		
 		try{
-		String sql = "select omistaja_login, omistaja_password from omistaja where omistaja_login = '" + login + "' AND omistaja_password ='" + password + "';";
+		String sql = "select omistaja_id, omistaja_login, omistaja_password from omistaja where omistaja_login = '" + login + "' AND omistaja_password ='" + password + "';";
 		
 		Omistaja omistaja = (Omistaja)getJdbcTemplate().queryForObject(sql, new LoginRowMapper());
 				
 		String userKannasta = omistaja.getLogin();
 		String passwordKannasta = omistaja.getPassword();
-		
+				
 		if (login.equals(userKannasta) && password.equals(passwordKannasta)){
 			
-			checkLogin = true;
-		}
-		}catch (Exception e){
-			//e.printStackTrace();
-			checkLogin = false;
-		}
+			return omistaja;
+		}		
 		
-		return checkLogin;
-	}
+		}catch (Exception e) {
+			return null;
+		}
+
+		return null;
+				
+		}
 	
 	
 }

@@ -87,7 +87,7 @@ $.ajax(settings).done(function (response) {
 		</tr>		
 		<tr>
 			<td>GET </td>
-			<td><a href="kyselyt/old/1">/kyselyt/old/{id} </a></td>
+			<td><a href="kyselyt/old/1"><font style="text-decoration: line-through;">/kyselyt/old/{id}</font></a><br><b>DEPRECATED</b></td>
 			<td>Show all questions + questionaire related data from specific questionnaire </td>
 			<td><pre>var settings = {
   "async": true,
