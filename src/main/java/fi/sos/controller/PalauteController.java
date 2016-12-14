@@ -1,7 +1,5 @@
 package fi.sos.controller;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -202,6 +200,7 @@ public class PalauteController {
 	 * Kyselyyn vastauksen lisääminen
 	 * Kyselyyn kysymyksen lisääminen
 	 * Uuden kyselyn lisääminen
+	 * Survey ID:n convertaaminen => ID
 	 * ===========================================================	 
 	 */
 
@@ -246,6 +245,8 @@ public class PalauteController {
 		
 		kydao.lisaaKysymys(id, kysymys.getKysymys(), kysymys.getKysymys_tyyppi(), kysymys.getKysymys_info());
 
+	
+		
 		return new ResponseEntity<Object>(HttpStatus.OK);
 
 	}
@@ -277,7 +278,15 @@ public class PalauteController {
 		
 		kdao.lisaaKysely(kysely.getKysely_nimi(), kysely.getKuvaus(), kysely.getOmistaja_id(), random);
 		
-		return new ResponseEntity<Object>(HttpStatus.OK);
+		List<Kysely> kyselyID = kdao.kaannaID(random);
+		
+		kyselyID.get(0).setSurveyID(random);
+		
+		if (kyselyID.size() != 0) {
+			return new ResponseEntity<Object>("{ surveyID: " + kyselyID.get(0).getSurveyID() + " , kysely_id: " + kyselyID.get(0).getKysely_id() + "}", HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<String>(ERROR_NULL, HttpStatus.PRECONDITION_FAILED);
 
 	}
 	

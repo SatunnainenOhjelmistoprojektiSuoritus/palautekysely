@@ -455,7 +455,7 @@ $.ajax(settings).done(function (response) {
 			<td>{"kysely_nimi" : "testi","kuvaus" : "testikuvaus","omistaja_id" : 1}</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 405, METHOD NOT SUPPORTED<br>HTTP 412, PRECONDITION FAILED  </td>
-			<td>Returns surveyID: a3fa76</td>
+			<td>{ surveyID: 74d29f , kysely_id: 130}</td>
 		</tr>
 		<tr>
 			<td>DELETE </td>
@@ -530,7 +530,33 @@ $.ajax(settings).done(function (response) {
 			<td>HTTP 200 OK </td>
 			<td>HTTP 409 CONFLICT</td>
 			<td>{"omistaja_id":0,"login":"joonas","password":null,"salt":null}</td>
-		</tr>		
+		</tr>
+							<tr>
+			<td>POST</td>
+			<td><a href="kyselyt/kysely/convertID">/kyselyt/kysely/convertID</a> </td>
+			<td>Convert surveyID to ID</td>
+			<td><pre>var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "http://proto433:8080/SOS_kysely/kyselyt/kysely/convertID",
+  "method": "POST",
+  "headers": {
+    "content-type": "application/json",
+    "cache-control": "no-cache",
+    "postman-token": "162d0f0a-41d7-7f51-ba10-fcbc9eef3fdd"
+  },
+  "processData": false,
+  "data": "{\n\"surveyID\" : \"nkkxkf\"\n}"
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});</pre> </td>
+			<td>{"login" : "joonas","password" : "nakkisota"}</td>
+			<td>HTTP 200 OK </td>
+			<td>HTTP 405, METHOD NOT SUPPORTED<br>HTTP 412, PRECONDITION FAILED  </td>
+			<td>1</td>
+		</tr>			
 	</tbody>
 </table>
 </div>
