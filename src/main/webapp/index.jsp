@@ -455,7 +455,7 @@ $.ajax(settings).done(function (response) {
 			<td>{"kysely_nimi" : "testi","kuvaus" : "testikuvaus","omistaja_id" : 1}</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 405, METHOD NOT SUPPORTED<br>HTTP 412, PRECONDITION FAILED  </td>
-			<td>Only returns HTTP response</td>
+			<td>Returns surveyID: a3fa76</td>
 		</tr>
 		<tr>
 			<td>DELETE </td>

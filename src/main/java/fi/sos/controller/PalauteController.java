@@ -276,8 +276,8 @@ public class PalauteController {
 		}
 		
 		kdao.lisaaKysely(kysely.getKysely_nimi(), kysely.getKuvaus(), kysely.getOmistaja_id(), random);
-
-		return new ResponseEntity<String>(random, HttpStatus.OK);
+		
+		return new ResponseEntity<Object>(HttpStatus.OK);
 
 	}
 
@@ -346,16 +346,13 @@ public class PalauteController {
 	@RequestMapping(value = "/user/register", produces = "application/json", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> registerNewUser(@RequestBody Omistaja omistaja) {		
 
-		
 		try {
 			omistaja.setSalt(Salaaja.generoiSuola());
 			String password = omistaja.getPassword();
 			omistaja.setPassword(Salaaja.salaa(password, omistaja.getSalt().toString() , Salaaja.SHA512, 10));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
-		
-		
+				
 		List<Omistaja> users = logindao.fetchAllUsers();
 		
 		for (int i = 0; i < users.size(); i++) {
