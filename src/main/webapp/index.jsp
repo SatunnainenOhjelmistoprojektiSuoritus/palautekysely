@@ -364,8 +364,10 @@ $.ajax(settings).done(function (response) {
   "headers": {
     "content-type": "application/json",
     "cache-control": "no-cache",
-    "postman-token": "af6b3901-a996-fe80-cb3f-248774db1319"
-  }
+    "postman-token": "cae122cc-6a00-24f7-0d07-be7633db2c59"
+  },
+  "processData": false,
+  "data": "{\"vastaus\" : \"esimerkkivastaus\"}\n"
 }
 
 $.ajax(settings).done(function (response) {
@@ -388,8 +390,10 @@ $.ajax(settings).done(function (response) {
   "headers": {
     "content-type": "application/json",
     "cache-control": "no-cache",
-    "postman-token": "406f0784-f609-151f-4336-ecdda711fb53"
-  }
+    "postman-token": "eedf1997-2791-83d2-625c-bc85943d5aed"
+  },
+  "processData": false,
+  "data": "{\n\"login\" : \"kissa\",\n\"password\" : \"rotta\"\n}"
 }
 
 $.ajax(settings).done(function (response) {
@@ -408,13 +412,15 @@ $.ajax(settings).done(function (response) {
 			<td><pre>var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://proto433:8080/SOS_kysely/kyselyt/1/lisaaKysymys",
+  "url": "http://proto433:8080/SOS_kysely/kyselyt/26/lisaaKysymys",
   "method": "POST",
   "headers": {
     "content-type": "application/json",
     "cache-control": "no-cache",
-    "postman-token": "18734e22-c52e-9593-f366-e6bda1467b2c"
-  }
+    "postman-token": "03fa3313-b992-9dd5-0713-2e63c32d20c3"
+  },
+  "processData": false,
+  "data": "{\n\"kysymys\" : \"Monta kaljaa?\",\n\"kysymys_tyyppi\" : \"int\"\n}"
 }
 
 $.ajax(settings).done(function (response) {
@@ -437,8 +443,10 @@ $.ajax(settings).done(function (response) {
   "headers": {
     "content-type": "application/json",
     "cache-control": "no-cache",
-    "postman-token": "c4ac53bd-fb61-5a1c-357f-1eae1738e634"
-  }
+    "postman-token": "6e24349d-092d-15b0-3849-970c54b5d5e1"
+  },
+  "processData": false,
+  "data": "{\n\"kysely_nimi\" : \"Kaljagallup2\",\n\"kuvaus\" : \"Mit‰ t‰n‰‰n juotaisiin\",\n\"omistaja_id\" : \"1\"\n}"
 }
 
 $.ajax(settings).done(function (response) {
@@ -456,7 +464,7 @@ $.ajax(settings).done(function (response) {
 			<td><pre>var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://localhost:8080/kysely/kyselyt/kysymys/9",
+  "url": "http://localhost:8080/SOS_kysely/kyselyt/kysymys/9",
   "method": "DELETE",
   "headers": {
     "content-type": "application/json",
@@ -480,7 +488,7 @@ $.ajax(settings).done(function (response) {
 			<td><pre>var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://proto433:8080/kysely/kyselyt/1",
+  "url": "http://proto433:8080/SOS_kysely/kyselyt/1",
   "method": "DELETE",
   "headers": {
     "content-type": "application/json",
@@ -496,6 +504,32 @@ $.ajax(settings).done(function (response) {
 			<td>HTTP 200 OK </td>
 			<td>None</td>
 			<td>Only returns HTTP response</td>
+		</tr>
+						<tr>
+			<td>POST</td>
+			<td><a href="user/register">/user/register</a> </td>
+			<td>Registers user</td>
+			<td><pre>var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "http://proto433:8080/SOS_kysely/user/register",
+  "method": "POST",
+  "headers": {
+    "content-type": "application/json",
+    "cache-control": "no-cache",
+    "postman-token": "1bfc2da5-53ec-a664-5170-aafc6544e443"
+  },
+  "processData": false,
+  "data": "{\n\"login\" : \"joonas\",\n\"password\" : \"nakkisota\"\n}"
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});</pre> </td>
+			<td>{"login" : "joonas","password" : "nakkisota"}</td>
+			<td>HTTP 200 OK </td>
+			<td>HTTP 409 CONFLICT</td>
+			<td>{"omistaja_id":0,"login":"joonas","password":null,"salt":null}</td>
 		</tr>		
 	</tbody>
 </table>

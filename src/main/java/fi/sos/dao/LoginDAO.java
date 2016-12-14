@@ -52,7 +52,7 @@ public class LoginDAO {
 		
 		
 		
-		if (login.equals(userKannasta) && password.equals(salattu)){
+		if (login.equals(userKannasta) && omistaja.getPassword().equals(salattu)){
 			
 			return omistaja;
 		}		

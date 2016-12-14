@@ -371,7 +371,8 @@ public class PalauteController {
 		}
 
 		logindao.addUser(omistaja);
-		
+		omistaja.setPassword(null);
+		omistaja.setSalt(null);
 		return new ResponseEntity<Object>(omistaja, HttpStatus.OK);
 	}
 	
