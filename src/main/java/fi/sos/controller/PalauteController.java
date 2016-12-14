@@ -1,5 +1,7 @@
 package fi.sos.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -27,6 +29,7 @@ import fi.sos.dao.KysymysDAO;
 import fi.sos.dao.LoginDAO;
 import fi.sos.dao.VastauksetDAO;
 import fi.sos.dao.VastausDAO;
+import fi.sos.security.Salaaja;
 import fi.sos.validation.Validaattori;
 
 @Controller
@@ -259,7 +262,6 @@ public class PalauteController {
 		String random = UUID.randomUUID().toString();
 		
 		random = random.substring(0, 6);
-		System.out.println(random + "***************************************--->*");
 		
 		if (!checkForNullDescription){
 			return new ResponseEntity<String>(ERROR_NULL, HttpStatus.PRECONDITION_FAILED);
@@ -286,16 +288,23 @@ public class PalauteController {
 	 */
 	
 	@RequestMapping(value = "/login", produces = "application/json", method = RequestMethod.POST)
-	public @ResponseBody ResponseEntity<?> authAccess(@RequestBody Omistaja omistaja) {		
-
-		Omistaja o = logindao.authAccess(omistaja.getLogin(), omistaja.getPassword());		
-
-		// Jos jotain palautuu, näytetään omistajan id + 'true'
-		if (o != null){			
-			
-			return new ResponseEntity<String>(o.getOmistaja_id() + " True", HttpStatus.OK);
-		}
+	public @ResponseBody ResponseEntity<?> authAccess(@RequestBody Omistaja omistaja) {
 		
+		List<Omistaja> suola = logindao.getSalty(omistaja.getLogin());
+		
+		
+		if (suola.size() != 0){
+			System.out.println("SUOLA: " + suola.get(0).getSalt());
+			Omistaja o = logindao.authAccess(omistaja.getLogin(), omistaja.getPassword(), suola.get(0).getSalt());	
+		
+
+			// Jos jotain palautuu, näytetään omistajan id + 'true'
+			if (o != null){			
+				System.out.println("CONTROLLER OMISTAJA: " + o);
+
+				return new ResponseEntity<String>(o.getOmistaja_id() + " True", HttpStatus.OK);
+			}
+		}
 		// Random negatiivinen numero
 		Random random = new Random();
 		int randomNumber = (random.nextInt(1000)-1001);
@@ -325,6 +334,45 @@ public class PalauteController {
 
 		return new ResponseEntity<Object>(HttpStatus.OK);
 
+	}
+	
+	/*==============================================
+	 * 
+	 *
+	 * Rekisteröinti
+	 * 
+	 *=============================================*/
+	
+	@RequestMapping(value = "/user/register", produces = "application/json", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<?> registerNewUser(@RequestBody Omistaja omistaja) {		
+
+		
+		try {
+			omistaja.setSalt(Salaaja.generoiSuola());
+			String password = omistaja.getPassword();
+			omistaja.setPassword(Salaaja.salaa(password, omistaja.getSalt().toString() , Salaaja.SHA512, 10));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		List<Omistaja> users = logindao.fetchAllUsers();
+		
+		for (int i = 0; i < users.size(); i++) {
+			
+			if (users.get(i).getLogin().equals(omistaja.getLogin())){
+				omistaja.setLogin("False");
+				omistaja.setOmistaja_id(0);
+				omistaja.setPassword("False");
+				omistaja.setSalt("False");
+				return new ResponseEntity<Object>(omistaja, HttpStatus.CONFLICT);
+			}
+			
+		}
+
+		logindao.addUser(omistaja);
+		
+		return new ResponseEntity<Object>(omistaja, HttpStatus.OK);
 	}
 	
 }
