@@ -1,6 +1,7 @@
 <html>
 <body>
-<table  border = "1">
+<div>
+<table border = "1">
 	<thead>
 		<tr>
 			<th>Http Method </th>			
@@ -10,8 +11,10 @@
 			<th>Input</th>
 			<th>Success Response </th>
 			<th>Error Response </th>
+			<th>Example success response</th>
 			
 		</tr>
+	</thead>
 	<tbody>	
 		<tr>
 			<td>GET </td>
@@ -35,7 +38,15 @@ $.ajax(settings).done(function (response) {
 			<td>None</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 405, METHOD NOT SUPPORTED </td>
-			
+			<td><pre>[
+  {
+    "kysely_id": 1,
+    "kysely_nimi": "Kysely1",
+    "deployed": false,
+    "kysely_kuvaus": "Esimerkkikuvaus",
+    "omistaja_id": 1,
+    "surveyID": "nkkxkf"
+  }]</pre>
 		</tr>
 		<tr>
 			<td>GET </td>
@@ -59,7 +70,15 @@ $.ajax(settings).done(function (response) {
 			<td>None</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 405, METHOD NOT SUPPORTED </td>
-			
+			<td><pre>[
+  {
+    "kysely_id": 2,
+    "kysely_nimi": "Tyytyväisyyskysely",
+    "deployed": true,
+    "kysely_kuvaus": "Esimerkkikuvaus",
+    "omistaja_id": 1,
+    "surveyID": "teqspw"
+  }]</pre>
 		</tr>
 		<tr>
 			<td>GET </td>
@@ -83,7 +102,15 @@ $.ajax(settings).done(function (response) {
 			<td>None</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 405, METHOD NOT SUPPORTED </td>
-			
+			<td><pre>[
+  {
+    "kysely_id": 1,
+    "kysely_nimi": "Kysely1",
+    "deployed": false,
+    "kysely_kuvaus": "Esimerkkikuvaus",
+    "omistaja_id": 1,
+    "surveyID": "nkkxkf"
+  }]</pre></td>
 		</tr>		
 		<tr>
 			<td>GET </td>
@@ -107,7 +134,23 @@ $.ajax(settings).done(function (response) {
 			<td>Questionaires ID</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 404, NOT FOUND</td>
-			
+			<td><pre>[
+  {
+    "kysely_id": 1,
+    "kysely_nimi": "Kysely1",
+    "deployed": false,
+    "kuvaus": null,
+    "omistaja_id": 1,
+    "kysymys": {
+      "kysymys_id": 5,
+      "kysely_id": 1,
+      "kysymys": "test",
+      "kysymys_tyyppi": "string",
+      "pakollinen": true,
+      "kysymys_info": null
+    },
+    "surveyID": "nkkxkf"
+  }]</pre></td>
 		</tr>
 				<tr>
 			<td>GET </td>
@@ -131,7 +174,23 @@ $.ajax(settings).done(function (response) {
 			<td>Survey ID</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 404, NOT FOUND</td>
-			
+			<td><pre>[
+  {
+    "kysely_id": 1,
+    "kysely_nimi": "Kysely1",
+    "deployed": false,
+    "kuvaus": null,
+    "omistaja_id": 1,
+    "kysymys": {
+      "kysymys_id": 5,
+      "kysely_id": 1,
+      "kysymys": "test",
+      "kysymys_tyyppi": "string",
+      "pakollinen": true,
+      "kysymys_info": null
+    },
+    "surveyID": "nkkxkf"
+  }]</pre></td>
 		</tr>
 		<tr>
 			<td>POST </td>
@@ -155,7 +214,7 @@ $.ajax(settings).done(function (response) {
 			<td>Questionaires ID</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 404, NOT FOUND </td>
-			
+			<td>Only returns HTTP response</td>
 		</tr>
 		<tr>
 			<td>DELETE </td>
@@ -179,7 +238,7 @@ $.ajax(settings).done(function (response) {
 			<td>Questionaires ID</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 404, NOT FOUND </td>
-			
+			<td>Only returns HTTP response</td>
 		</tr>
 		<tr>
 			<td>POST </td>
@@ -203,7 +262,7 @@ $.ajax(settings).done(function (response) {
 			<td>Questionaires ID</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 404, NOT FOUND </td>
-			
+			<td>Only returns HTTP response</td>
 		</tr>
 		<tr>
 			<td>DELETE </td>
@@ -227,7 +286,7 @@ $.ajax(settings).done(function (response) {
 			<td>Questionaires ID</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 404, NOT FOUND </td>
-			
+			<td>Only returns HTTP response</td>
 		</tr>
 		<tr>
 			<td>GET </td>
@@ -251,7 +310,15 @@ $.ajax(settings).done(function (response) {
 			<td>None</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 405, METHOD NOT SUPPORTED </td>
-			
+			<td><pre>[
+  {
+    "kysymys_id": 1,
+    "vastaus_id": 1,
+    "vastaus": "Jaa",
+    "kysely_id": 1,
+    "kysymys": "Testikysymys",
+    "kysymys_tyyppi": "String"
+  }]</pre></td>
 		</tr>
 		<tr>
 			<td>GET </td>
@@ -275,7 +342,15 @@ $.ajax(settings).done(function (response) {
 			<td>Questionaires ID</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 404, NOT FOUND </td>
-			
+			<td><pre>[  {
+    "kysymys_id": 1,
+    "vastaus_id": 24,
+    "vastaus": "on niitä",
+    "kysely_id": 1,
+    "kysymys": "Testikysymys",
+    "kysymys_tyyppi": "String"
+  }
+]</pre></td>
 		</tr>
 		<tr>
 			<td>POST </td>
@@ -299,7 +374,7 @@ $.ajax(settings).done(function (response) {
 			<td>{"vastaus" : "esimerkkivastaus"}</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 405, METHOD NOT SUPPORTED<br>HTTP 412, PRECONDITION FAILED </td>
-			
+			<td>Only returns HTTP response</td>
 		</tr>
 		<tr>
 			<td>POST </td>
@@ -324,7 +399,7 @@ $.ajax(settings).done(function (response) {
 			<td>{"login" : "max","password" : "max"}</td>
 			<td>HTTP 200 OK </td>
 			<td>401 UNAUTHORIZED </td>
-			
+			<td><pre>5 True</pre></td>
 		</tr>
 		<tr>
 			<td>POST </td>
@@ -348,7 +423,7 @@ $.ajax(settings).done(function (response) {
 			<td>{"kysymys" : "juutalaisia, onko heitä?","kysymys_tyyppi" : "string", "kysymys_info" : "vaihtoehto1/vaihtoehto2/vaihtoehto3"}</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 405, METHOD NOT SUPPORTED<br>HTTP 412, PRECONDITION FAILED  </td>
-			
+			<td>Only returns HTTP response</td>
 		</tr>
 		<tr>
 			<td>POST </td>
@@ -372,7 +447,7 @@ $.ajax(settings).done(function (response) {
 			<td>{"kysely_nimi" : "testi","kuvaus" : "testikuvaus","omistaja_id" : 1}</td>
 			<td>HTTP 200 OK </td>
 			<td>HTTP 405, METHOD NOT SUPPORTED<br>HTTP 412, PRECONDITION FAILED  </td>
-			
+			<td>Only returns HTTP response</td>
 		</tr>
 		<tr>
 			<td>DELETE </td>
@@ -396,7 +471,7 @@ $.ajax(settings).done(function (response) {
 			<td>Question ID</td>
 			<td>HTTP 200 OK </td>
 			<td>None</td>
-			
+			<td>Only returns HTTP response</td>
 		</tr>
 				<tr>
 			<td>DELETE</td>
@@ -420,9 +495,11 @@ $.ajax(settings).done(function (response) {
 			<td>Questionnaire ID</td>
 			<td>HTTP 200 OK </td>
 			<td>None</td>
-			
+			<td>Only returns HTTP response</td>
 		</tr>		
 	</tbody>
 </table>
+</div>
+
 </body>
 </html>
