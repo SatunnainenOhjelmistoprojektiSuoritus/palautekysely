@@ -55,5 +55,14 @@ public class KyselyDAO {
 		
 	}
 	
+	public List<Kysely> kaannaID(String surveyID){
+		
+		String sql = "select kysely_id from kysely where surveyID ='" + surveyID + "';";
+		SurveyIDRowMapper mapper = new SurveyIDRowMapper();
+		List<Kysely> kyselyID = jdbcTemplate.query(sql, mapper);
+		
+		return kyselyID;
+	}
+	
 	
 }

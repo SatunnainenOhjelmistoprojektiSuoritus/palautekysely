@@ -280,6 +280,30 @@ public class PalauteController {
 		return new ResponseEntity<String>(random, HttpStatus.OK);
 
 	}
+	
+	@RequestMapping(value = "/kyselyt/kysely/convertID", produces = "application/json", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<?> kyselyKaannaID(@RequestBody Kysely kysely) {
+		
+		String surveyID = kysely.getSurveyID();
+		List<Kysely> kyselyID = null;
+		String kyselyIDString = "";
+
+		try{
+		kyselyID = kdao.kaannaID(surveyID);
+		kyselyIDString = Integer.toString(kyselyID.get(0).getKysely_id());
+		}catch(Exception e){
+			return new ResponseEntity<String>(ERROR_WRONG_TYPE, HttpStatus.PRECONDITION_FAILED);
+		}
+		
+		if(kyselyIDString.length() > 0){
+			return new ResponseEntity<Object>(kyselyIDString, HttpStatus.OK);
+		}
+		else{
+			return new ResponseEntity<String>(ERROR_WRONG_TYPE, HttpStatus.PRECONDITION_FAILED);
+		}
+	}
+	
+	
 
 	/*
 	 * ===========================================================
